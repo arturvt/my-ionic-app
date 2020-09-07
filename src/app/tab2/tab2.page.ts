@@ -11,7 +11,7 @@ export class Tab2Page implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    console.log(`Tab 2 started`);
+  console.log(`Tab 2 started`);
   }
 
   triggerCall(): void {

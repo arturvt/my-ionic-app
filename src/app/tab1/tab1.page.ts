@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CountryService } from './countries/country.service';
+import { Country, CountryResponse } from './countries/country';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private countryService: CountryService) {}
+
+  countries: Country[];
+
+  getCountriesByCurrency(currency: string): void {
+    this.countryService.getCountryByCurrency(currency).subscribe((response: CountryResponse) => {
+      console.log(response);
+      this.countries = response.data;
+    });
+  }
 
 }

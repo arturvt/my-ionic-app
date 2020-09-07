@@ -1,5 +1,13 @@
 # Sample Ionic App
 
+## About
+
+A sample app in Ionic + Capacitor using free APIS.
+
+1. GeoDB Cities API - http://geodb-cities-api.wirefreethought.com/
+2. OpenWeather API - https://openweathermap.org/api
+3. Star Wars API - Swapi - https://swapi.dev/
+
 ## Run
 
 run `ionic serve` to see the app in the browser.
