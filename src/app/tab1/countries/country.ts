@@ -1,11 +1,19 @@
 export interface CountryResponse {
   data: Country[];
+}
 
+export interface CountryDetailResponse {
+  data: CountryDetail;
 }
 
 export interface Country {
-  code: string;
-  currencyCodes: string[];
   name: string;
+  code: string;
+}
+
+export interface CountryDetail extends Country {
+  flagImageUri: string;
+  numRegions: number;
+  currencyCodes: string[];
   wikiDataId: string;
 }

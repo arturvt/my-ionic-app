@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import {  CountryResponse } from './country';
+import { Country, CountryResponse, CountryDetailResponse } from './country';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { countriesList } from './countries';
 
 
 const URL = 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries?currencyCode=USD';
 const HOST = 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries';
+// https://wft-geo-db.p.rapidapi.com/v1/geo/countries/US
 
 @Injectable({providedIn: 'root'})
 export class CountryService {
@@ -16,8 +18,12 @@ export class CountryService {
 
   readonly headers = new HttpHeaders().set('x-rapidapi-key', environment.geo_api.key);
 
-  getCountries(): Observable<CountryResponse> {
-    return this.httpclient.get<CountryResponse>(HOST);
+  getCountries(): Country[] {
+    return countriesList;
+   }
+
+  getCountry(name: string): Observable<CountryDetailResponse> {
+    return this.httpclient.get<CountryDetailResponse>(`${HOST}/${name}`, { headers: this.headers});
   }
 
   getCountryByLanguage(languageCode: string): Observable<CountryResponse> {
