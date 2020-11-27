@@ -19,6 +19,9 @@ export class DetailComponent implements OnInit {
     private loadingController: LoadingController
   ) {}
   ngOnInit(): void {
+
+    this.countryService.countryDetails('br');
+
     this.loadingController
       .create({
         message: 'Please wait...',

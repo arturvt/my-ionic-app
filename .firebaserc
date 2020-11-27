@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fiery-inferno-81": {
+      "hosting": {
+        "app": [
+          "fiery-inferno-81"
+        ]
+      }
+    }
+  }
+}
