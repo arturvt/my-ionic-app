@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../country.service';
-import { CountryDetail, CountryDetailResponse } from '../country';
+import { CountryDetail } from '../country';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, map, mergeMap, take } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
@@ -20,8 +20,6 @@ export class DetailComponent implements OnInit {
   ) {}
   ngOnInit(): void {
 
-    this.countryService.countryDetails('br');
-
     this.loadingController
       .create({
         message: 'Please wait...',
@@ -29,25 +27,25 @@ export class DetailComponent implements OnInit {
       .then((val: HTMLIonLoadingElement) => {
         this.loader = val;
         this.loader.present();
+        this.requestCountry();
       });
+  }
 
+  private requestCountry(): void {
     this.route.paramMap
       .pipe(
         take(1),
         mergeMap((params) => this.countryService.getCountry(params.get('countryId'))),
-        map((response: CountryDetailResponse) => response.data),
         finalize(() => this.loader.dismiss())
       )
       .subscribe(
         (countryDetail: CountryDetail) => {
           this.countryDetail = countryDetail;
           console.log('?');
+          console.log(countryDetail)
         },
         (error) => {
           console.error(error);
-        },
-        () => {
-          console.log('on done');
         }
       );
   }

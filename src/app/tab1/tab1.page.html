@@ -7,19 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-list-header>
-      <ion-label>
-        Select Country by characteristic
-      </ion-label>
-    </ion-list-header>
-  </ion-list>
-
-  <ion-list>
+  <ion-list *ngIf="countryRequest">
+    <ion-item>
+      <ion-label>Total Countries</ion-label>
+      <ion-badge slot="end">{{countryRequest.totalElements}}</ion-badge>
+    </ion-item>
     <ion-item>
       <ion-label>Select a country</ion-label>
     </ion-item>
-    <ion-item *ngFor="let country of countries">
+    <ion-item *ngFor="let country of countryRequest.content">
       <ion-label [routerLink]="['/tabs/tab1/country', country.code]">{{country.name}}</ion-label>
     </ion-item>
   </ion-list>

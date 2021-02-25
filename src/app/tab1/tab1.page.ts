@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from './countries/country.service';
-import { Country } from './countries/country';
+import { CountryRequest } from './countries/country';
 
 @Component({
   selector: 'app-tab1',
@@ -10,9 +10,10 @@ import { Country } from './countries/country';
 export class Tab1Page implements OnInit {
 
   constructor(private countryService: CountryService) {}
-  countries: Country[];
+  countryRequest: CountryRequest;
 
   ngOnInit(): void {
-    this.countries = this.countryService.getCountries();
+    this.countryService.getCountries()
+    .subscribe((countryRequest: CountryRequest) => this.countryRequest = countryRequest);
   }
 }
