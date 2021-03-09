@@ -2,32 +2,27 @@ import { Injectable } from '@angular/core';
 import { CountryDetail, CountryRequest } from './country';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({ providedIn: 'root' })
 export class CountryService {
+
+  readonly host: string;
+
   constructor(
     private httpclient: HttpClient,
-    private firestone: AngularFirestore
-  ) {}
-
-
-  countryDetails(countryID: string): void {
-    this.firestone.collection('countries').valueChanges().subscribe((value) => {
-      console.log(`got from firebase`);
-      console.log(value);
-    });
+  ) {
+    this.host = environment.geo_api.host;
   }
 
-  getCountries(sort: string = 'asc'): Observable<CountryRequest> {
-    return this.httpclient.get<CountryRequest>(`/api/country`, {
-      params: {sort}
+  getCountries(page: number = 0,  sort: string = 'asc'): Observable<CountryRequest> {
+    return this.httpclient.get<CountryRequest>(`${this.host}/api/country`, {
+      params: {page: `${page}`, sort: sort}
     });
   }
 
   getCountry(name: string): Observable<CountryDetail> {
-    console.log('CountryDEtail')
-    return this.httpclient.get<CountryDetail>(`/api/country/${name}`);
+    return this.httpclient.get<CountryDetail>(`${this.host}/api/country/${name}`);
   }
 }

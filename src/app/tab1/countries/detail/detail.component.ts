@@ -41,7 +41,6 @@ export class DetailComponent implements OnInit {
       .subscribe(
         (countryDetail: CountryDetail) => {
           this.countryDetail = countryDetail;
-          console.log('?');
           console.log(countryDetail)
         },
         (error) => {

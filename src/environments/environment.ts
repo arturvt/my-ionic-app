@@ -4,19 +4,9 @@
 
 export const environment = {
   production: false,
-
-  firebase: {
-    apiKey: 'AIzaSyBC-mzNt_5UqzO-mrQhLuXwAZGKpxtRFYs',
-    authDomain: 'fiery-inferno-81.firebaseapp.com',
-    databaseURL: 'https://fiery-inferno-81.firebaseio.com',
-    projectId: 'fiery-inferno-81',
-    storageBucket: 'fiery-inferno-81.appspot.com',
-    messagingSenderId: '1018598247793',
-    appId: '1:1018598247793:web:cc7c85c495d131414ebad0',
-  },
   geo_api: {
-    key: '4afD687vWcZfy5rQUP9BTvA255dNQ4Oi',
-  },
+    host: ''
+  }
 };
 
 /*

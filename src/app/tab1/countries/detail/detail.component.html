@@ -7,12 +7,11 @@
       Country detail
     </ion-title>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div *ngIf="countryDetail">
-
-
     <ion-card>
       <img [src]="countryDetail.flagImageUri" />
       <ion-card-header>
@@ -24,6 +23,11 @@
         <p>{{countryDetail.name}} has the unique code {{countryDetail.code}};</p>
         <p>The capital is {{countryDetail.capital}} with a total of {{countryDetail.numRegions}} regions;</p>
         <p>Oficial current code(s): <span *ngFor="let c of countryDetail.currencyCodes">{{c}} </span>  </p>
+
+        <ion-item>
+          <ion-label>Regions</ion-label>
+          <ion-badge color="light" slot="end">22</ion-badge>
+        </ion-item>
       </ion-card-content>
     </ion-card>
   </div>
