@@ -43,7 +43,7 @@ export class DetailComponent implements OnInit {
         (countryDetail: CountryDetail) => {
           this.countryDetail = countryDetail;
           this.imageUrl = countryDetail.flagImageUri.replace('http://', 'https://');
-          console.log(this.imageUrl);
+          console.log(countryDetail);
         },
         (error) => {
           console.error(error);
