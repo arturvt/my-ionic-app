@@ -12,6 +12,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class DetailComponent implements OnInit {
   countryDetail: CountryDetail;
+  imageUrl: string;
   private loader: HTMLIonLoadingElement;
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +42,8 @@ export class DetailComponent implements OnInit {
       .subscribe(
         (countryDetail: CountryDetail) => {
           this.countryDetail = countryDetail;
-          console.log(countryDetail)
+          this.imageUrl = countryDetail.flagImageUri.replace('http://', 'https://');
+          console.log(this.imageUrl);
         },
         (error) => {
           console.error(error);

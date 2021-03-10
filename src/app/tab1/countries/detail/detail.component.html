@@ -13,7 +13,7 @@
 <ion-content [fullscreen]="true">
   <div *ngIf="countryDetail">
     <ion-card>
-      <img [src]="countryDetail.flagImageUri" />
+      <img [src]="imageUrl" />
       <ion-card-header>
         <ion-card-subtitle>Details</ion-card-subtitle>
         <ion-card-title>{{countryDetail.name}}</ion-card-title>
@@ -21,7 +21,7 @@
 
       <ion-card-content>
         <p>{{countryDetail.name}} has the unique code {{countryDetail.code}};</p>
-        <p>The capital is {{countryDetail.capital}} with a total of {{countryDetail.numRegions}} regions;</p>
+        <p>The capital is {{countryDetail.capital}} with a total of {{countryDetail.numRegions}} rngegions;</p>
         <p>Oficial current code(s): <span *ngFor="let c of countryDetail.currencyCodes">{{c}} </span>  </p>
 
         <ion-item>

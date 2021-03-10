@@ -15,8 +15,8 @@
     <ion-item>
       <ion-label>Select a country</ion-label>
     </ion-item>
-    <ion-item *ngFor="let country of countries">
-      <ion-label [routerLink]="['/tabs/tab1/country', country.code]">{{country.name}}</ion-label>
+    <ion-item *ngFor="let country of countries" [routerLink]="['/tabs/tab1/country', country.code]">
+      <ion-label>{{country.name}}</ion-label>
     </ion-item>
   </ion-list>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
