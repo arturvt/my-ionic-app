@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -7,13 +7,14 @@
       Country detail
     </ion-title>
   </ion-toolbar>
-
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content >
   <div *ngIf="countryDetail">
     <ion-card>
-      <img [src]="imageUrl" />
+      <!-- <img width="390" height="250" [src]="imageUrl" /> -->
+      <ion-img height="250" src="{{imageUrl}}"></ion-img>
+
       <ion-card-header>
         <ion-card-subtitle>Details</ion-card-subtitle>
         <ion-card-title>{{countryDetail.name}}</ion-card-title>
@@ -33,5 +34,11 @@
         </ion-item>
       </ion-card-content>
     </ion-card>
+
+    <ion-list>
+      <ion-item *ngFor="let region of countryDetail.region">
+        <ion-label>{{region.name}}</ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>

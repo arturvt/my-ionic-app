@@ -1,3 +1,5 @@
+import { Region } from "./region";
+
 export interface Country {
   code: string;
   name: string;
@@ -10,6 +12,7 @@ export interface CountryDetail extends Country {
   numRegions: number;
   wikiDataId: string;
   flagImageUri: string;
+  region: Region[];
 }
 
 export interface Pageable {
