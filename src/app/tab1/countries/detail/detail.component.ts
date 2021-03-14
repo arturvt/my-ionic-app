@@ -3,9 +3,10 @@ import { CountryService } from '../country.service';
 import { CountryDetail } from '../country';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, map, mergeMap, take } from 'rxjs/operators';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { RegionService } from '../region/region.service';
-import { RegionFull, RegionRequest } from '../region';
+import { Region, RegionFull, RegionRequest } from '../region';
+import { RegionComponent } from '../region/region.component';
 
 @Component({
   selector: 'app-detail',
@@ -14,14 +15,13 @@ import { RegionFull, RegionRequest } from '../region';
 })
 export class DetailComponent implements OnInit {
   countryDetail: CountryDetail;
-  regions: RegionFull[];
   imageUrl: string;
   private loader: HTMLIonLoadingElement;
   constructor(
     private route: ActivatedRoute,
     private countryService: CountryService,
     private loadingController: LoadingController,
-    private regionService: RegionService
+    public modalController: ModalController
   ) {}
 
   ngOnInit(): void {
@@ -37,14 +37,18 @@ export class DetailComponent implements OnInit {
       });
   }
 
-  private getRegion(): void {
-    this.regionService.getRegions(this.countryDetail.code).pipe(take(1))
-    .subscribe((regionRequest: RegionRequest) => {
-      this.regions = regionRequest.regions;
-      console.log(regionRequest.id);
-      console.log(regionRequest.regions[0]);
-      //todo: Colocar aqui um MODAL!  No click das regions
+  async presentModal(region: Region) {
+    console.log(region);
+
+
+
+    const modal = await this.modalController.create({
+      component: RegionComponent,
+      componentProps: {
+        region: region
+      }
     });
+    return await modal.present();
   }
 
   private requestCountry(): void {
@@ -58,7 +62,6 @@ export class DetailComponent implements OnInit {
         (countryDetail: CountryDetail) => {
           this.countryDetail = countryDetail;
           this.imageUrl = countryDetail.flagImageUri.replace('http://', 'https://');
-          this.getRegion();
         },
         (error) => {
           console.error(error);

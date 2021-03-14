@@ -36,7 +36,7 @@
     </ion-card>
 
     <ion-list>
-      <ion-item *ngFor="let region of countryDetail.region">
+      <ion-item *ngFor="let region of countryDetail.region" (click) ="presentModal(region)">
         <ion-label>{{region.name}}</ion-label>
       </ion-item>
     </ion-list>
