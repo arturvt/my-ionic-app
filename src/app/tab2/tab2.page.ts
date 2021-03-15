@@ -21,7 +21,8 @@ export class Tab2Page implements OnInit {
   ngOnInit(): void {
   Browser.prefetch({
     urls: [
-      'https://www.swisscom.ch'
+      'https://www.swisscom.ch',
+      'https://www.swisscom.ch/en/residential.html'
     ]
   }).then(_ => console.log('prefetched'));
   }
@@ -29,6 +30,12 @@ export class Tab2Page implements OnInit {
   triggerCall(): void {
     console.log(`Call`);
     this.productService.getProducts();
+  }
+
+  async openPDF() {
+    await Browser.open({
+      url: 'http://www.africau.edu/images/default/sample.pdf'
+    });
   }
 
   async sendMessage() {
