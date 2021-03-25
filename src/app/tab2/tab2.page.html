@@ -20,7 +20,19 @@
     </ion-label>
   </ion-item-divider>
 
+  <ion-label>Residential webpage</ion-label>
   <ion-button expand="full" (click)="openBrowser()">Open swisscom Website</ion-button>
+  <ion-label>Current Interruptions</ion-label>
+  <ion-button expand="full" (click)="openBrowser()">Open swisscom Website</ion-button>
+  <ion-label>Help with your phone</ion-label>
+  <ion-button expand="full" (click)="openBrowserUrl('https://www.swisscom.ch/en/residential/help/mobile.html')">Open browser</ion-button>
+
+
+  <ion-label>Overview inOne home page</ion-label>
+  <ion-button expand="full" (click)="openBrowserUrl('https://www.swisscom.ch/en/residential/plans-rates/inone/inone-configurator.popup.html')">Open Browser</ion-button>
+
+
+
   <ion-segment>
     <ion-button expand="full" (click)="openPDF()">Open PDF</ion-button>
   </ion-segment>
@@ -28,7 +40,7 @@
 
   <hr>
 
-  <ion-list>
+  <!-- <ion-list>
     <ion-list-header lines="full">
       <h1>Local Push notifications</h1>
     </ion-list-header>
@@ -37,7 +49,6 @@
       <ion-input [(ngModel)]="pushContent" placeholder="Enter Input"></ion-input>
     </ion-item>
     <ion-item>
-      <!-- Number type input -->
       <ion-label>Send push in {{notificationTime}} seconds</ion-label>
       <ion-button expand="full" (click)="sendMessage()">Send message</ion-button>
     </ion-item>
@@ -62,6 +73,6 @@
     <header>Modals</header>
     <ion-button (click)="alertModal()" expand="block" color="danger" >Alert modal</ion-button>
     <ion-button (click)="questionModal()" expand="block" color="light" >Question</ion-button>
-  </section>
+  </section> -->
 
 </ion-content>

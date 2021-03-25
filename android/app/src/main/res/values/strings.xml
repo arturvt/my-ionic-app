@@ -5,7 +5,7 @@
   <string name="package_name">io.ionic.starter</string>
   <string name="custom_url_scheme">io.ionic.starter</string>
   <string name="ionic_app_id">2dfa496b</string>
-  <string name="ionic_channel_name">Master</string>
+  <string name="ionic_channel_name">test</string>
   <string name="ionic_update_method">background</string>
   <string name="ionic_max_versions">2</string>
   <string name="ionic_min_background_duration">30</string>

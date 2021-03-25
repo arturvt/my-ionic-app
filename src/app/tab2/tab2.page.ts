@@ -22,7 +22,9 @@ export class Tab2Page implements OnInit {
   Browser.prefetch({
     urls: [
       'https://www.swisscom.ch',
-      'https://www.swisscom.ch/en/residential.html'
+      'https://www.swisscom.ch/en/residential.html',
+      'https://www.swisscom.ch/en/residential/help/network-and-service-status.html',
+      'https://www.swisscom.ch/en/residential/plans-rates/inone/inone-configurator.popup.html'
     ]
   }).then(_ => console.log('prefetched'));
   }
@@ -61,6 +63,12 @@ export class Tab2Page implements OnInit {
   async openBrowser() {
     await Browser.open({
       url: 'https://www.swisscom.ch'
+    });
+  }
+
+  async openBrowserUrl(url: string) {
+    await Browser.open({
+      url, windowName: 'Swisscom title'
     });
   }
 
