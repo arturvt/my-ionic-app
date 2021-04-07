@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ɵɵsetComponentScope } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountryService } from './countries/country.service';
 import { Country, CountryRequest, Pageable } from './countries/country';
 import { IonInfiniteScroll, LoadingController } from '@ionic/angular';

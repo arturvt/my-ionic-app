@@ -18,8 +18,11 @@
       </ion-card-header>
 
       <ion-card-content class="ion-padding">
-        <p>The capital is {{countryDetail.capital}} with a total of {{countryDetail.regions.length}} regions/states;</p>
-        <p>Oficial current code(s): <span>{{countryDetail.currency.name}} </span> </p>
+        <div>
+          <p>The capital is {{countryDetail.capital}} with a total of {{countryDetail.regions.length}} regions/states;</p>
+          <p>Oficial current code(s): <span>{{countryDetail.currency.name}} </span> </p>
+        </div>
+
 
         <ion-item>
           <ion-label>Capital: {{countryDetail.capital}}</ion-label>
@@ -33,5 +36,11 @@
         </ion-item>
       </ion-card-content>
     </ion-card>
+
   </div>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button (click)="presentActionSheet()" expand="block">Actions</ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
