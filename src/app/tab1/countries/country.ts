@@ -3,16 +3,29 @@ import { Region } from "./region";
 export interface Country {
   code: string;
   name: string;
-  currencyCodes: string[];
-  wikiDataId: string;
 }
 
 export interface CountryDetail extends Country {
   capital: string;
-  numRegions: number;
-  wikiDataId: string;
-  flagImageUri: string;
+  wikiId: string;
+  population: number;
+  flag: string;
   region: Region[];
+  currency: Currency;
+  location: Location;
+}
+
+interface Location {
+  location: string;
+  lat: string;
+  lon: string;
+  geo: string;
+  map: string[];
+}
+
+interface Currency {
+  name: string;
+  code: string;
 }
 
 export interface Pageable {

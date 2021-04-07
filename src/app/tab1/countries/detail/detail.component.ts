@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../country.service';
 import { CountryDetail } from '../country';
 import { ActivatedRoute } from '@angular/router';
-import { finalize, map, mergeMap, take } from 'rxjs/operators';
+import { finalize, mergeMap, take } from 'rxjs/operators';
 import { LoadingController, ModalController } from '@ionic/angular';
-import { RegionService } from '../region/region.service';
-import { Region, RegionFull, RegionRequest } from '../region';
+import { Region } from '../region';
 import { RegionComponent } from '../region/region.component';
 
 @Component({
@@ -61,7 +60,7 @@ export class DetailComponent implements OnInit {
       .subscribe(
         (countryDetail: CountryDetail) => {
           this.countryDetail = countryDetail;
-          this.imageUrl = countryDetail.flagImageUri.replace('http://', 'https://');
+          this.imageUrl = countryDetail.flag.replace('http://', 'https://');
         },
         (error) => {
           console.error(error);
