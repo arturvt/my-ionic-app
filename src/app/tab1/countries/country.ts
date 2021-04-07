@@ -10,7 +10,7 @@ export interface CountryDetail extends Country {
   wikiId: string;
   population: number;
   flag: string;
-  region: Region[];
+  regions: Region[];
   currency: Currency;
   location: Location;
 }

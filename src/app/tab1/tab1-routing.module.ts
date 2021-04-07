@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Tab1Page } from './tab1.page';
 import { DetailComponent } from './countries/detail/detail.component';
+import { RegionComponent } from './countries/region/region.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,16 @@ const routes: Routes = [
   },
   {
     path: 'country/:countryId',
-    component: DetailComponent,
+    children: [
+      {
+        path: '',
+        component: DetailComponent,
+      },
+      {
+        path: 'regions',
+        component: RegionComponent,
+      }
+    ]
   }
 ];
 

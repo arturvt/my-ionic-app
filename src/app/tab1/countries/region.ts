@@ -3,15 +3,7 @@ export interface Region {
   name: string;
   isoCode: string;
   fipsCode: string;
-  wikiDataId: string;
-}
-
-export interface RegionFull extends Region {
+  wikiId: string;
   capital: string;
   numCities: number;
-}
-
-export interface RegionRequest {
-  regions: RegionFull[];
-  id: string;
 }
