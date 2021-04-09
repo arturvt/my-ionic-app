@@ -6,6 +6,8 @@ import { finalize, mergeMap, take } from 'rxjs/operators';
 import { ActionSheetController, LoadingController, ModalController } from '@ionic/angular';
 import { Region } from '../region';
 import { RegionComponent } from '../region/region.component';
+import { Plugins } from '@capacitor/core';
+const { Browser } = Plugins;
 
 @Component({
   selector: 'app-detail',
@@ -25,6 +27,12 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    Browser.prefetch({
+      urls: [
+        'https://www.wikidata.org/',
+        'https://www.wikidata.org/wiki/Wikidata:Main_Page',
+      ]
+    }).then(_ => console.log('prefetched'));
 
     this.loadingController
       .create({
@@ -68,14 +76,16 @@ export class DetailComponent implements OnInit {
 
    async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
+      header: 'Optoins',
       cssClass: 'my-custom-class',
       buttons: [{
-        text: 'Delete',
+        text: 'Details',
         role: 'destructive',
-        icon: 'trash',
+        icon: 'globe-outline',
         handler: () => {
-          console.log('Delete clicked');
+          Browser.open({
+            url: 'https://www.wikidata.org/wiki/' + this.countryDetail.wikiId
+          });
         }
       }, {
         text: 'Share',

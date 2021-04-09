@@ -3,6 +3,7 @@ import { CountryService } from './countries/country.service';
 import { Country, CountryRequest, Pageable } from './countries/country';
 import { IonInfiniteScroll, LoadingController } from '@ionic/angular';
 import { finalize, take } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-tab1',
@@ -27,13 +28,15 @@ export class Tab1Page implements OnInit {
       .then((val: HTMLIonLoadingElement) => {
         this.loader = val;
         this.loader.present();
-        this.countryService
-          .getCountries()
-          .pipe(
-            take(1),
-            finalize(() => this.loader.dismiss())
-          )
-          .subscribe((countryRequest: CountryRequest) => this.fillComponentContent(countryRequest));
+
+        combineLatest([
+          this.countryService.getAllCountries(),
+          this.countryService.getCountries()])
+          .pipe(take(1), finalize(() => this.loader.dismiss()))
+          .subscribe(([all, countryRequest]) => {
+            this.countries = all;
+            this.fillComponentContent(countryRequest);
+          });
       });
   }
 
@@ -41,13 +44,11 @@ export class Tab1Page implements OnInit {
   private fillComponentContent = (countryRequest: CountryRequest) => {
     this.totalElements = countryRequest.totalElements;
     this.pageNumber = countryRequest.pageable.pageNumber;
-    this.countries = this.countries.concat(countryRequest.content);
     this.page = countryRequest.pageable;
     console.log(this.page);
   };
 
   loadData(event) {
-
     this.countryService
     .getCountries(this.pageNumber + 1)
     .pipe(take(1))

@@ -37,8 +37,7 @@ export interface Pageable {
 }
 
 export interface CountryRequest extends PageableRequest{
-  content: Country[];
-
+  content: CountryDetail[];
 }
 
 export interface PageableRequest {
