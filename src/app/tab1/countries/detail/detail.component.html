@@ -3,14 +3,18 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Country</ion-title>
+    <ion-title>{{countryName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content >
   <div *ngIf="countryDetail">
     <ion-card>
-      <ion-img height="250" src="{{imageUrl}}"></ion-img>
+      <ion-thumbnail>
+        <img class="flag-img" src="{{imageUrl}}"  height="250px" />
+      </ion-thumbnail>
+
+
 
       <ion-card-header>
         <ion-card-subtitle>Details</ion-card-subtitle>
@@ -41,7 +45,14 @@
 
     <ion-list>
       <ion-item *ngFor="let map of countryDetail.location.map">
-        <ion-img height="250" src="{{map}}"></ion-img>
+        <div class="container">
+          <div class="polaroid">
+            <ion-thumbnail slot="start">
+              <img [src]="map"/>
+            </ion-thumbnail>
+        </div>
+        </div>
+
       </ion-item>
     </ion-list>
     <ion-footer>

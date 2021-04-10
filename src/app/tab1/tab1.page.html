@@ -15,7 +15,7 @@
     <ion-item>
       <ion-label>Select a country</ion-label>
     </ion-item>
-    <ion-item *ngFor="let country of countries" button [routerLink]="['/tabs/tab1/country', country.code]">
+    <ion-item *ngFor="let country of countries" button [routerLink]="['/tabs/tab1/country', country.code, { title: country.name}]">
       <ion-badge slot="start">{{country.code}}</ion-badge>
       <ion-label>{{country.name}}</ion-label>
     </ion-item>

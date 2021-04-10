@@ -17,6 +17,7 @@ const { Browser } = Plugins;
 export class DetailComponent implements OnInit {
   countryDetail: CountryDetail;
   imageUrl: string;
+  countryName: string;
   private loader: HTMLIonLoadingElement;
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,8 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.countryName = this.route.snapshot.paramMap.get('title');
+
     Browser.prefetch({
       urls: [
         'https://www.wikidata.org/',
