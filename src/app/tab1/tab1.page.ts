@@ -1,64 +1,75 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CountryService } from './countries/country.service';
-import { Country, CountryRequest, Pageable } from './countries/country';
-import { IonInfiniteScroll, LoadingController } from '@ionic/angular';
-import { finalize, take } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {CountryService} from './countries/country.service';
+import {Country, CountryRequest, Pageable} from './countries/country';
+import {LoadingController} from '@ionic/angular';
+import {finalize, take} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+    selector: 'app-tab1',
+    templateUrl: 'tab1.page.html',
+    styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+    totalElements = 0;
+    private page: Pageable;
+    private pageNumber = 0;
+    private loader: HTMLIonLoadingElement;
+    private countries: Country[];
+    private filteredCountries$ = new BehaviorSubject<Country[]>([]);
 
-  constructor(private countryService: CountryService, private loadingController: LoadingController) {}
-  private page: Pageable;
-  private pageNumber = 0;
-  private loader: HTMLIonLoadingElement;
-  countries: Country[] = [];
-  totalElements = 0;
+    constructor(private countryService: CountryService, private loadingController: LoadingController) {
+    }
 
-  ngOnInit(): void {
-    this.loadingController
-      .create({
-        message: 'Please wait...',
-      })
-      .then((val: HTMLIonLoadingElement) => {
-        this.loader = val;
-        this.loader.present();
+    get countryList(): Observable<Country[]> {
+        return this.filteredCountries$;
+    }
 
-        combineLatest([
-          this.countryService.getAllCountries(),
-          this.countryService.getCountries()])
-          .pipe(take(1), finalize(() => this.loader.dismiss()))
-          .subscribe(([all, countryRequest]) => {
-            this.countries = all;
-            this.fillComponentContent(countryRequest);
-          });
-      });
-  }
+    ngOnInit(): void {
+        this.loadingController
+            .create({
+                message: 'Please wait...',
+            })
+            .then((val: HTMLIonLoadingElement) => {
+                this.loader = val;
+                this.loader.present();
 
+                combineLatest([
+                    this.countryService.getAllCountries(),
+                    this.countryService.getCountries()])
+                    .pipe(take(1), finalize(() => this.loader.dismiss()))
+                    .subscribe(([all, countryRequest]) => {
+                        this.countries = all;
+                        this.filterCountries();
+                        this.fillComponentContent(countryRequest);
+                    });
+            });
+    }
 
-  private fillComponentContent = (countryRequest: CountryRequest) => {
-    this.totalElements = countryRequest.totalElements;
-    this.pageNumber = countryRequest.pageable.pageNumber;
-    this.page = countryRequest.pageable;
-    console.log(this.page);
-  };
+    clearAction(): void {
+        console.log('cancel!');
+    }
 
-  loadData(event) {
-    this.countryService
-    .getCountries(this.pageNumber + 1)
-    .pipe(take(1))
-    .subscribe((countryRequest: CountryRequest) => {
-      this.fillComponentContent(countryRequest);
-      event.target.complete();
-      if (this.countries.length == this.totalElements) {
-        event.target.disabled = true;
-        console.log('Loaded 100%')
-      }
-    });
-  }
+    onType(event): void {
+        const term = event.target.value.toLowerCase();
+        this.filterCountries(term);
+
+    }
+
+    private fillComponentContent = (countryRequest: CountryRequest) => {
+        this.totalElements = countryRequest.totalElements;
+        this.pageNumber = countryRequest.pageable.pageNumber;
+        this.page = countryRequest.pageable;
+        console.log(this.page);
+    };
+
+    private filterCountries(searchTerm?: string): void {
+        if (searchTerm) {
+            const filtered = this.countries.filter((country: Country) => country.name.toLowerCase().startsWith(searchTerm));
+            this.filteredCountries$.next(filtered);
+        } else {
+            this.filteredCountries$.next(this.countries);
+        }
+
+    }
 }
