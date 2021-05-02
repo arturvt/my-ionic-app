@@ -68,7 +68,7 @@ export class Tab2Page implements OnInit {
 
   async openBrowserUrl(url: string) {
     await Browser.open({
-      url, windowName: 'Swisscom title'
+      url, windowName: 'Swisscom title',
     });
   }
 

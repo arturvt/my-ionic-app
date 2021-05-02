@@ -1,15 +1,23 @@
-<ion-header [translucent]="false">
+<ion-header translucent>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button  (click)="dismiss()" >Click me</ion-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>
-      Region detail
-    </ion-title>
+    <ion-title>Regions</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>Region</h1>
-  <h2>{{region.name}}</h2>
+
+<ion-content *ngIf="country">
+
+  <ion-card *ngFor="let region of country.regions" (click)="openRegion(region.wikiId)">
+    <ion-card-header>
+      <ion-card-title>{{region.name}}, {{region.isoCode}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{region.name}} has {{region.numCities}} cities.
+      The capital is {{region.capital}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

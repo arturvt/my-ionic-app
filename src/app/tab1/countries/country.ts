@@ -1,18 +1,31 @@
-import { Region } from "./region";
+import { Region } from './region';
 
 export interface Country {
   code: string;
   name: string;
-  currencyCodes: string[];
-  wikiDataId: string;
 }
 
 export interface CountryDetail extends Country {
   capital: string;
-  numRegions: number;
-  wikiDataId: string;
-  flagImageUri: string;
-  region: Region[];
+  wikiId: string;
+  population: number;
+  flag: string;
+  regions: Region[];
+  currency: Currency;
+  location: Location;
+}
+
+interface Location {
+  location: string;
+  lat: string;
+  lon: string;
+  geo: string;
+  map: string[];
+}
+
+interface Currency {
+  name: string;
+  code: string;
 }
 
 export interface Pageable {
@@ -24,8 +37,7 @@ export interface Pageable {
 }
 
 export interface CountryRequest extends PageableRequest{
-  content: Country[];
-
+  content: CountryDetail[];
 }
 
 export interface PageableRequest {
