@@ -1,78 +1,67 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Native Stuff
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Native Stuff
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">App Settings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">App Settings</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <h1>Open Internal browser</h1>
-  <ion-item-divider>
-    <ion-label>
-      Swisscom homepage
-    </ion-label>
-  </ion-item-divider>
+    <h1>Ionic Internal browser</h1>
 
-  <ion-label>Residential webpage</ion-label>
-  <ion-button expand="full" (click)="openBrowser()">Open swisscom Website</ion-button>
-  <ion-label>Current Interruptions</ion-label>
-  <ion-button expand="full" (click)="openBrowser()">Open swisscom Website</ion-button>
-  <ion-label>Help with your phone</ion-label>
-  <ion-button expand="full" (click)="openBrowserUrl('https://www.swisscom.ch/en/residential/help/mobile.html')">Open browser</ion-button>
+    <ng-container *ngFor="let link of linksList">
+        <ion-label>{{link.description}}</ion-label>
+        <ion-button
+                expand="full"
+                (click)="openBrowserUrl(link.url)">{{link.name}}</ion-button>
+    </ng-container>
 
-
-  <ion-label>Overview inOne home page</ion-label>
-  <ion-button expand="full" (click)="openBrowserUrl('https://www.swisscom.ch/en/residential/plans-rates/inone/inone-configurator.popup.html')">Open Browser</ion-button>
+    <ion-segment>
+        <ion-button expand="full" (click)="openPDF()">Open PDF</ion-button>
+    </ion-segment>
 
 
+    <hr>
 
-  <ion-segment>
-    <ion-button expand="full" (click)="openPDF()">Open PDF</ion-button>
-  </ion-segment>
+    <!-- <ion-list>
+      <ion-list-header lines="full">
+        <h1>Local Push notifications</h1>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Message:</ion-label>
+        <ion-input [(ngModel)]="pushContent" placeholder="Enter Input"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Send push in {{notificationTime}} seconds</ion-label>
+        <ion-button expand="full" (click)="sendMessage()">Send message</ion-button>
+      </ion-item>
+    </ion-list>
 
+    <ion-list>
+      <ion-list-header lines="full">
+        <h1>Share API</h1>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Share a content</ion-label>
+        <ion-button expand="expand" (click)="shareContent()">Share</ion-button>
+      </ion-item>
+    </ion-list>
 
-  <hr>
+    <section>
+      <header>Splashscreen</header>
+      <ion-button (click)="triggerSplashScreen()" expand="block" color="secondary" >A block button</ion-button>
+    </section>
 
-  <!-- <ion-list>
-    <ion-list-header lines="full">
-      <h1>Local Push notifications</h1>
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Message:</ion-label>
-      <ion-input [(ngModel)]="pushContent" placeholder="Enter Input"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Send push in {{notificationTime}} seconds</ion-label>
-      <ion-button expand="full" (click)="sendMessage()">Send message</ion-button>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header lines="full">
-      <h1>Share API</h1>
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Share a content</ion-label>
-      <ion-button expand="expand" (click)="shareContent()">Share</ion-button>
-    </ion-item>
-  </ion-list>
-
-  <section>
-    <header>Splashscreen</header>
-    <ion-button (click)="triggerSplashScreen()" expand="block" color="secondary" >A block button</ion-button>
-  </section>
-
-  <section>
-    <header>Modals</header>
-    <ion-button (click)="alertModal()" expand="block" color="danger" >Alert modal</ion-button>
-    <ion-button (click)="questionModal()" expand="block" color="light" >Question</ion-button>
-  </section> -->
+    <section>
+      <header>Modals</header>
+      <ion-button (click)="alertModal()" expand="block" color="danger" >Alert modal</ion-button>
+      <ion-button (click)="questionModal()" expand="block" color="light" >Question</ion-button>
+    </section> -->
 
 </ion-content>

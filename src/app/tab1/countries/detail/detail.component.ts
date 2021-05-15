@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../country.service';
 import { CountryDetail } from '../country';
 import { ActivatedRoute } from '@angular/router';
-import { finalize, mergeMap, take } from 'rxjs/operators';
+import { finalize, map, mergeMap, take } from 'rxjs/operators';
 import { ActionSheetController, LoadingController, ModalController } from '@ionic/angular';
 import { Region } from '../region';
 import { RegionComponent } from '../region/region.component';
@@ -53,7 +53,7 @@ export class DetailComponent implements OnInit {
     const modal = await this.modalController.create({
       component: RegionComponent,
       componentProps: {
-        region: region
+        region
       }
     });
     return await modal.present();
@@ -68,6 +68,7 @@ export class DetailComponent implements OnInit {
       )
       .subscribe(
         (countryDetail: CountryDetail) => {
+          console.log(countryDetail);
           this.countryDetail = countryDetail;
           this.imageUrl = countryDetail.flag.replace('http://', 'https://');
         },

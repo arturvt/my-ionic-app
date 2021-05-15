@@ -1,106 +1,119 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from './products/products.service';
-import { Plugins } from '@capacitor/core';
-const { Browser } = Plugins;
-const { LocalNotifications } = Plugins;
-const { Share } = Plugins;
-const { SplashScreen } = Plugins;
-const { Modals } = Plugins;
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from './products/products.service';
+import {Plugins} from '@capacitor/core';
 
+const {Browser} = Plugins;
+const {LocalNotifications} = Plugins;
+const {Share} = Plugins;
+const {SplashScreen} = Plugins;
+const {Modals} = Plugins;
+
+interface Links {
+    name: string;
+    url: string;
+    description: string;
+}
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+    selector: 'app-tab2',
+    templateUrl: 'tab2.page.html',
+    styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
 
-  constructor(private productService: ProductService) {}
-  notificationTime = 5;
-  pushContent: string;
-  ngOnInit(): void {
-  Browser.prefetch({
-    urls: [
-      'https://www.swisscom.ch',
-      'https://www.swisscom.ch/en/residential.html',
-      'https://www.swisscom.ch/en/residential/help/network-and-service-status.html',
-      'https://www.swisscom.ch/en/residential/plans-rates/inone/inone-configurator.popup.html'
-    ]
-  }).then(_ => console.log('prefetched'));
-  }
+    notificationTime = 5;
+    pushContent: string;
+    readonly linksList: Links[] = [{
+        name: 'Swisscom Website',
+        description: 'Residential webpage',
+        url: 'https://www.swisscom.ch',
+    }, {
+        name: 'Residential Website',
+      description: 'Help with your phone',
+        url: 'https://www.swisscom.ch/en/residential.html',
+    }, {
+        name: 'Status page',
+        description: 'Overview inOne home page',
+        url: 'https://www.swisscom.ch/en/residential/help/network-and-service-status.html',
+    }
+    ];
 
-  triggerCall(): void {
-    console.log(`Call`);
-    this.productService.getProducts();
-  }
+    constructor(private productService: ProductService) {
+    }
 
-  async openPDF() {
-    await Browser.open({
-      url: 'http://www.africau.edu/images/default/sample.pdf'
-    });
-  }
+    ngOnInit(): void {
+      const prefetchtUrls = this.linksList.map((link: Links) => link.url);
+      Browser.prefetch({
+            urls: prefetchtUrls
+        }).then(_ => console.log('prefetched'));
+    }
 
-  async sendMessage() {
-    console.log(`Scheduling notification for ${this.notificationTime}`);
-    console.log(`content: ${this.pushContent}`)
-    const notifs = await LocalNotifications.schedule({
-      notifications: [
-        {
-          title: "Hello Push!",
-          body: this.pushContent,
-          id: 1,
-          schedule: { at: new Date(Date.now() + 1000 * 5) },
-          sound: null,
-          attachments: null,
-          actionTypeId: "",
-          extra: null
-        }
-      ]
-    });
-    console.log('scheduled notifications', notifs);
-  }
+    triggerCall(): void {
+        console.log(`Call`);
+        this.productService.getProducts();
+    }
 
-  async openBrowser() {
-    await Browser.open({
-      url: 'https://www.swisscom.ch'
-    });
-  }
+    async openPDF() {
+        await Browser.open({
+            url: 'http://www.africau.edu/images/default/sample.pdf'
+        });
+    }
 
-  async openBrowserUrl(url: string) {
-    await Browser.open({
-      url, windowName: 'Swisscom title',
-    });
-  }
+    async sendMessage() {
+        console.log(`Scheduling notification for ${this.notificationTime}`);
+        console.log(`content: ${this.pushContent}`);
+        const notifs = await LocalNotifications.schedule({
+            notifications: [
+                {
+                    title: 'Hello Push!',
+                    body: this.pushContent,
+                    id: 1,
+                    schedule: {at: new Date(Date.now() + 1000 * 5)},
+                    sound: null,
+                    attachments: null,
+                    actionTypeId: '',
+                    extra: null
+                }
+            ]
+        });
+        console.log('scheduled notifications', notifs);
+    }
 
-  async shareContent() {
-    let shareRet = await Share.share({
-      title: 'See cool stuff',
-      text: 'Really awesome thing you need to see right meow',
-      url: 'http://ionicframework.com/',
-      dialogTitle: 'Share with buddies'
-    });
-  }
+    async openBrowserUrl(url: string) {
+        await Browser.open({
+            url, windowName: 'Swisscom title',
+        });
+    }
 
-  async triggerSplashScreen() {
-    console.log('triggering splash');
-    SplashScreen.show({
-      showDuration: 2000,
-      autoHide: true
-    });
-  }
+    async shareContent() {
+        let shareRet = await Share.share({
+            title: 'See cool stuff',
+            text: 'Really awesome thing you need to see right meow',
+            url: 'http://ionicframework.com/',
+            dialogTitle: 'Share with buddies'
+        });
+    }
 
-  async alertModal() {
-    let alertRet = await Modals.alert({
-      title: 'Stop',
-      message: 'this is an error'
-    });
-  }
+    async triggerSplashScreen() {
+        console.log('triggering splash');
+        SplashScreen.show({
+            showDuration: 2000,
+            autoHide: true
+        });
+    }
 
-  async questionModal() {
-    let promptRet = await Modals.prompt({
-      title: 'Hello',
-      message: 'What\'s your name?'
-    });
-    console.log('Prompt ret', promptRet);
-  }
+    async alertModal() {
+        let alertRet = await Modals.alert({
+            title: 'Stop',
+            message: 'this is an error'
+        });
+    }
+
+    async questionModal() {
+        let promptRet = await Modals.prompt({
+            title: 'Hello',
+            message: 'What\'s your name?'
+        });
+        console.log('Prompt ret', promptRet);
+    }
 }

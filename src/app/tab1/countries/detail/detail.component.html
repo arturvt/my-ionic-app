@@ -3,56 +3,66 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{countryName}}</ion-title>
+    <ion-title>{{ countryName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <div *ngIf="countryDetail">
     <ion-card>
       <ion-thumbnail>
-        <img class="flag-img" src="{{imageUrl}}"  height="250px" />
+        <img class="flag-img" src="{{ imageUrl }}" height="250px" />
       </ion-thumbnail>
-
-
 
       <ion-card-header>
         <ion-card-subtitle>Details</ion-card-subtitle>
-        <ion-card-title>{{countryDetail.name}}</ion-card-title>
+        <ion-card-title>{{ countryDetail.name }}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
         <div>
-          <p>The capital is {{countryDetail.capital}} with a total of {{countryDetail.regions.length}} regions/states;</p>
-          <p>Oficial currency is <span>{{countryDetail.currency.name}} </span> </p>
+          <p>The capital is {{ countryDetail.capital }} with a total of {{ countryDetail.regions.length }}
+            regions/states;</p>
+          <p>
+            Oficial currency is <span>{{ countryDetail.currency.name }} </span>
+          </p>
         </div>
         <ion-item>
-          <ion-label>Capital: {{countryDetail.capital}}</ion-label>
+          <ion-label>Capital: {{ countryDetail.capital }}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-label>Population: {{countryDetail.population | number}}</ion-label>
+          <ion-label>Population: {{ countryDetail.population | number }}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-label>Currency: {{countryDetail.currency.name | titlecase}}</ion-label>
+          <ion-label>Currency: {{ countryDetail.currency.name | titlecase }} [{{countryDetail.currency.code}}]
+          </ion-label>
         </ion-item>
-        <ion-item>One hundred units: {{ 100 | currency: countryDetail.currency.code }}</ion-item>
+        <ion-item>Currency: {{ 100 | currency: countryDetail.currency.code }}</ion-item>
         <ion-item routerLink="../regions" [disabled]="countryDetail.regions.length === 0">
           <ion-label>Regions</ion-label>
-          <ion-badge color="light" slot="end">{{countryDetail.regions.length}}</ion-badge>
+          <ion-badge color="light" slot="end">{{ countryDetail.regions.length }}</ion-badge>
         </ion-item>
       </ion-card-content>
     </ion-card>
 
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Map</ion-card-subtitle>
+        <ion-card-title>{{ countryDetail.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <app-country-map [countryLocation]="countryDetail.location" ></app-country-map>
+      </ion-card-content>
+    </ion-card>
     <ion-list>
       <ion-item *ngFor="let map of countryDetail.location.map">
         <div class="container">
           <div class="polaroid">
             <ion-thumbnail slot="start">
-              <img [src]="map"/>
+              <img [src]="map" />
             </ion-thumbnail>
+          </div>
         </div>
-        </div>
-
       </ion-item>
     </ion-list>
     <ion-footer>
@@ -61,5 +71,4 @@
       </ion-toolbar>
     </ion-footer>
   </div>
-
 </ion-content>

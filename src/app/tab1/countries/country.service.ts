@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Country, CountryDetail, CountryRequest } from './country';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { from, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HTTP, HTTPResponse } from '@ionic-native/http/ngx';
 import { map, tap } from 'rxjs/operators';
-import { MapOperator } from 'rxjs/internal/operators/map';
 
 @Injectable({ providedIn: 'root' })
 export class CountryService {

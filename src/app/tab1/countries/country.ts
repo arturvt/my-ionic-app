@@ -12,10 +12,10 @@ export interface CountryDetail extends Country {
   flag: string;
   regions: Region[];
   currency: Currency;
-  location: Location;
+  location: CountryLocation;
 }
 
-interface Location {
+export interface CountryLocation {
   location: string;
   lat: string;
   lon: string;
