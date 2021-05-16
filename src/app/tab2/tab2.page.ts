@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from './products/products.service';
 import {Plugins} from '@capacitor/core';
-
+import { BrowserTab } from '@ionic-native/browser-tab/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 const {Browser} = Plugins;
 const {LocalNotifications} = Plugins;
 const {Share} = Plugins;
@@ -38,7 +39,8 @@ export class Tab2Page implements OnInit {
     }
     ];
 
-    constructor(private productService: ProductService) {
+    constructor(private productService: ProductService,
+                private browserTab: BrowserTab, private inAppBrowser: InAppBrowser) {
     }
 
     ngOnInit(): void {
@@ -85,35 +87,39 @@ export class Tab2Page implements OnInit {
         });
     }
 
-    async shareContent() {
-        let shareRet = await Share.share({
-            title: 'See cool stuff',
-            text: 'Really awesome thing you need to see right meow',
-            url: 'http://ionicframework.com/',
-            dialogTitle: 'Share with buddies'
+    openInAppBrowser(url: string): void {
+
+        const browser = this.inAppBrowser.create(url);
+
+        browser.on('loadstop').subscribe(event => {
+            browser.insertCSS({ code: 'body{color: red;' });
         });
     }
 
-    async triggerSplashScreen() {
-        console.log('triggering splash');
-        SplashScreen.show({
-            showDuration: 2000,
-            autoHide: true
-        });
+    openBrowserNative(url: string): void {
+        this.browserTab.isAvailable()
+            .then(isAvailable => {
+                if (isAvailable) {
+                    this.browserTab.openUrl(url);
+                } else {
+                    // open URL with InAppBrowser instead or SafariViewController
+                }
+            });
     }
 
-    async alertModal() {
-        let alertRet = await Modals.alert({
-            title: 'Stop',
-            message: 'this is an error'
-        });
-    }
 
-    async questionModal() {
-        let promptRet = await Modals.prompt({
-            title: 'Hello',
-            message: 'What\'s your name?'
-        });
-        console.log('Prompt ret', promptRet);
-    }
+    // async alertModal() {
+    //     let alertRet = await Modals.alert({
+    //         title: 'Stop',
+    //         message: 'this is an error'
+    //     });
+    // }
+    //
+    // async questionModal() {
+    //     let promptRet = await Modals.prompt({
+    //         title: 'Hello',
+    //         message: 'What\'s your name?'
+    //     });
+    //     console.log('Prompt ret', promptRet);
+    // }
 }

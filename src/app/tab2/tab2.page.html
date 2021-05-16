@@ -14,12 +14,27 @@
     </ion-header>
 
     <h1>Ionic Internal browser</h1>
-
     <ng-container *ngFor="let link of linksList">
         <ion-label>{{link.description}}</ion-label>
         <ion-button
                 expand="full"
                 (click)="openBrowserUrl(link.url)">{{link.name}}</ion-button>
+    </ng-container>
+
+    <h1>Native Internal browser</h1>
+    <ng-container *ngFor="let link of linksList">
+        <ion-label>{{link.description}}</ion-label>
+        <ion-button
+                expand="full"
+                (click)="openBrowserNative(link.url)">{{link.name}}</ion-button>
+    </ng-container>
+
+    <h1>in App Browser</h1>
+    <ng-container *ngFor="let link of linksList">
+        <ion-label>{{link.description}}</ion-label>
+        <ion-button
+                expand="full"
+                (click)="openInAppBrowser(link.url)">{{link.name}}</ion-button>
     </ng-container>
 
     <ion-segment>
