@@ -10,7 +10,7 @@
   <ion-searchbar
           (ionClear)="clearAction()"
           (ionInput)="onType($event)"
-          debounce="1000ms"
+          debounce="300ms"
   ></ion-searchbar>
   <ng-container *ngIf="(countryList | async) as filteredCountries">
     <ion-list>

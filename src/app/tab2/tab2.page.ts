@@ -81,6 +81,23 @@ export class Tab2Page implements OnInit {
         console.log('scheduled notifications', notifs);
     }
 
+    async shareContent() {
+        let shareRet = await Share.share({
+            title: 'See cool stuff',
+            text: 'Really awesome thing you need to see right meow',
+            url: 'http://ionicframework.com/',
+            dialogTitle: 'Share with buddies'
+        });
+    }
+
+    async triggerSplashScreen() {
+        console.log('triggering splash');
+        SplashScreen.show({
+            showDuration: 2000,
+            autoHide: true
+        });
+    }
+
     async openBrowserUrl(url: string) {
         await Browser.open({
             url, windowName: 'Swisscom title',
@@ -108,18 +125,18 @@ export class Tab2Page implements OnInit {
     }
 
 
-    // async alertModal() {
-    //     let alertRet = await Modals.alert({
-    //         title: 'Stop',
-    //         message: 'this is an error'
-    //     });
-    // }
-    //
-    // async questionModal() {
-    //     let promptRet = await Modals.prompt({
-    //         title: 'Hello',
-    //         message: 'What\'s your name?'
-    //     });
-    //     console.log('Prompt ret', promptRet);
-    // }
+    async alertModal() {
+        const alertRet = await Modals.alert({
+            title: 'Stop',
+            message: 'this is an error'
+        });
+    }
+
+    async questionModal() {
+        const promptRet = await Modals.prompt({
+            title: 'Hello',
+            message: 'What\'s your name?'
+        });
+        console.log('Prompt ret', promptRet);
+    }
 }

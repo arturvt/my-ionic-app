@@ -61,7 +61,7 @@ export class Tab1Page implements OnInit {
         this.pageNumber = countryRequest.pageable.pageNumber;
         this.page = countryRequest.pageable;
         console.log(this.page);
-    };
+    }
 
     private filterCountries(searchTerm?: string): void {
         if (searchTerm) {
