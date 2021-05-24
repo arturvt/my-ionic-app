@@ -28,7 +28,7 @@
           </p>
         </div>
         <ion-item>
-          <ion-label>Capital: {{ countryDetail.capital }}</ion-label>
+          <ion-label routerLink="../map">Capital: {{ countryDetail.capital }}</ion-label>
         </ion-item>
         <ion-item>
           <ion-label>Population: {{ countryDetail.population | number }}</ion-label>
@@ -42,16 +42,6 @@
           <ion-label>Regions</ion-label>
           <ion-badge color="light" slot="end">{{ countryDetail.regions.length }}</ion-badge>
         </ion-item>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>Map</ion-card-subtitle>
-        <ion-card-title>{{ countryDetail.name }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <app-country-map [countryLocation]="countryDetail.location" ></app-country-map>
       </ion-card-content>
     </ion-card>
     <ion-list>

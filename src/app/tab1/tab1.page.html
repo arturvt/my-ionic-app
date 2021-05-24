@@ -12,14 +12,14 @@
           (ionInput)="onType($event)"
           debounce="300ms"
   ></ion-searchbar>
+  <ion-item>
+    <ion-label>Total Countries</ion-label>
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-badge *ngIf="!loading" slot="end">{{totalElements}}</ion-badge>
+  </ion-item>
   <ng-container *ngIf="(countryList | async) as filteredCountries">
     <ion-list>
-      <ion-item>
-        <ion-label>Total Countries</ion-label>
-        <ion-badge slot="end">{{totalElements}}</ion-badge>
-      </ion-item>
-
-      <ion-item *ngFor="let country of filteredCountries" button [routerLink]="['/tabs/tab1/country', country.code, { title: country.name}]">
+      <ion-item *ngFor="let country of filteredCountries" button [routerLink]="['/tabs/tab1/country', country.code]">
         <ion-badge slot="start">{{country.code}}</ion-badge>
         <ion-label>{{country.name}}</ion-label>
       </ion-item>

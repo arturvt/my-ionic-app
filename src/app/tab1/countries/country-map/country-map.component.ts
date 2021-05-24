@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MapService} from './map.service';
 import {CountryLocation} from '../country';
-
 
 @Component({
     selector: 'app-country-map',
@@ -12,12 +10,19 @@ export class CountryMapComponent implements OnInit {
 
     @Input() countryLocation: CountryLocation;
     mapLatLongLocation: google.maps.LatLngLiteral;
-    constructor(private mapService: MapService) {}
-    apiLoaded: boolean;
+    constructor() {}
+    zoom = 5;
 
-    zoom = 6;
+    options: google.maps.MapOptions = {
+        // mapTypeId: 'hybrid',
+        zoomControl: true,
+        scrollwheel: true,
+        disableDoubleClickZoom: false,
+        maxZoom: 15,
+        minZoom: 1,
+      }
 
-    private buildMapOptions(): google.maps.LatLngLiteral {
+    private buildMapLocation(): google.maps.LatLngLiteral {
         return {
             lat: +this.countryLocation.lon,
             lng: +this.countryLocation.lat
@@ -25,10 +30,7 @@ export class CountryMapComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      console.log('started');
-      this.mapLatLongLocation = this.buildMapOptions();
-      this.apiLoaded = this.mapService.apiLoaded;
-      console.log(this.countryLocation);
+      this.mapLatLongLocation = this.buildMapLocation();
     }
 
 }

@@ -1,8 +1,5 @@
 <div>
-    <h1>Map</h1>
-    <div *ngIf="apiLoaded && countryLocation">
-        <p>Loaded: {{apiLoaded}}</p>
-        <google-map [center]="mapLatLongLocation"
-                    [zoom]="zoom"></google-map>
-    </div>
+    <google-map [center]="mapLatLongLocation"
+                [zoom]="zoom"
+                [options]="options"></google-map>
 </div>

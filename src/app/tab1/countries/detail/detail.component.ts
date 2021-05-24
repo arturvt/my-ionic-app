@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../country.service';
 import { CountryDetail } from '../country';
 import { ActivatedRoute } from '@angular/router';
-import { finalize, map, mergeMap, take } from 'rxjs/operators';
-import { ActionSheetController, LoadingController, ModalController } from '@ionic/angular';
+import { mergeMap, take } from 'rxjs/operators';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Region } from '../region';
 import { RegionComponent } from '../region/region.component';
 import { Plugins } from '@capacitor/core';
@@ -18,34 +18,21 @@ export class DetailComponent implements OnInit {
   countryDetail: CountryDetail;
   imageUrl: string;
   countryName: string;
-  private loader: HTMLIonLoadingElement;
   constructor(
     private route: ActivatedRoute,
     private countryService: CountryService,
-    private loadingController: LoadingController,
     public modalController: ModalController,
     public actionSheetController: ActionSheetController
   ) {}
 
   ngOnInit(): void {
-    this.countryName = this.route.snapshot.paramMap.get('title');
-
     Browser.prefetch({
       urls: [
         'https://www.wikidata.org/',
         'https://www.wikidata.org/wiki/Wikidata:Main_Page',
       ]
     }).then(_ => console.log('prefetched'));
-
-    this.loadingController
-      .create({
-        message: 'Please wait...',
-      })
-      .then((val: HTMLIonLoadingElement) => {
-        this.loader = val;
-        this.loader.present();
-        this.requestCountry();
-      });
+    this.requestCountry();
   }
 
   async presentModal(region: Region) {
@@ -63,12 +50,11 @@ export class DetailComponent implements OnInit {
     this.route.paramMap
       .pipe(
         take(1),
-        mergeMap((params) => this.countryService.getCountry(params.get('countryId'))),
-        finalize(() => this.loader.dismiss())
+        mergeMap((params) => this.countryService.getCountry(params.get('countryId')))
       )
       .subscribe(
         (countryDetail: CountryDetail) => {
-          console.log(countryDetail);
+          this.countryName = countryDetail.name;
           this.countryDetail = countryDetail;
           this.imageUrl = countryDetail.flag.replace('http://', 'https://');
         },
