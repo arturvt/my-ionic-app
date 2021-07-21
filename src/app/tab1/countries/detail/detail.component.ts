@@ -6,8 +6,7 @@ import { mergeMap, take } from 'rxjs/operators';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Region } from '../region';
 import { RegionComponent } from '../region/region.component';
-import { Plugins } from '@capacitor/core';
-const { Browser } = Plugins;
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-detail',
@@ -26,12 +25,6 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    Browser.prefetch({
-      urls: [
-        'https://www.wikidata.org/',
-        'https://www.wikidata.org/wiki/Wikidata:Main_Page',
-      ]
-    }).then(_ => console.log('prefetched'));
     this.requestCountry();
   }
 

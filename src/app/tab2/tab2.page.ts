@@ -48,10 +48,6 @@ export class Tab2Page implements OnInit {
   constructor(private productService: ProductService, private inAppBrowser: InAppBrowser) {}
 
   ngOnInit(): void {
-    const prefetchtUrls = this.linksList.map((link: Links) => link.url);
-    Browser.prefetch({
-      urls: prefetchtUrls,
-    }).then((_) => console.log('prefetched'));
   }
 
   triggerCall(): void {
