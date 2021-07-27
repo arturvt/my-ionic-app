@@ -5,6 +5,8 @@ import { from, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HTTP, HTTPResponse } from '@ionic-native/http/ngx';
 import { map, tap } from 'rxjs/operators';
+import { StorageService } from 'src/app/services/storage.service';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({ providedIn: 'root' })
 export class CountryService {
@@ -12,27 +14,40 @@ export class CountryService {
   private cacheCountries: Map<string, CountryDetail> = new Map();
   private allCountries: Country[];
 
-  constructor(private httpclient: HttpClient, private http: HTTP) {
+  constructor(private httpclient: HttpClient,
+    private http: HTTP,
+    private storage: StorageService,
+    private toastController: ToastController) {
     this.host = environment.geo_api.host;
   }
 
+  async presentToast(message?: string) {
+    const toast = await this.toastController.create({
+      message: message? message: 'Your settings have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+
   getAllCountries(): Observable<Country[]> {
-    if (this.allCountries) {
+    const allFromStorageStr = this.storage.get('allCountries');
+
+    if (allFromStorageStr) {
+      this.allCountries = JSON.parse(allFromStorageStr);
+      this.presentToast('Loaded From storage');
       return of(this.allCountries);
     }
-    const urlRequest = `${this.host}/api/country/all`;
-    if (environment.production) {
-      return from(this.http.get(urlRequest, {}, {})).pipe(
-        map((resp: HTTPResponse) => {
-          const parsedObj = JSON.parse(resp.data);
-          this.allCountries = parsedObj;
-          return parsedObj;
-        })
-      );
-    } else {
-      return this.httpclient.get<Country[]>(urlRequest).pipe(
-        tap((resp: Country[]) => (this.allCountries = resp)));
+
+    if (this.allCountries) {
+      this.presentToast('Loaded from service cache');
+      return of(this.allCountries);
     }
+
+    return this.requestAllCountries().pipe(tap((allCountries: Country[]) => {
+      this.presentToast('Loaded from request');
+      this.storage.set('allCountries', JSON.stringify(this.allCountries));
+    }));
   }
 
   getCountries(page: number = 0, sort: string = 'asc'): Observable<CountryRequest> {
@@ -44,9 +59,11 @@ export class CountryService {
         })
       );
     } else {
-      return this.httpclient.get<CountryRequest>(urlRequest).pipe(tap((resp: CountryRequest) => {
-        resp.content.forEach((countryDetail: CountryDetail) => this.cacheCountries[countryDetail.code] = countryDetail);
-      }));
+      return this.httpclient.get<CountryRequest>(urlRequest).pipe(
+        tap((resp: CountryRequest) => {
+          resp.content.forEach((countryDetail: CountryDetail) => (this.cacheCountries[countryDetail.code] = countryDetail));
+        })
+      );
     }
   }
 
@@ -64,8 +81,22 @@ export class CountryService {
         })
       );
     } else {
-      return this.httpclient.get<CountryDetail>(urlRequest).pipe(
-        tap((resp: CountryDetail) => (this.cacheCountries[countryID] = resp)));
+      return this.httpclient.get<CountryDetail>(urlRequest).pipe(tap((resp: CountryDetail) => (this.cacheCountries[countryID] = resp)));
+    }
+  }
+
+  private requestAllCountries(): Observable<Country[]> {
+    const urlRequest = `${this.host}/api/country/all`;
+    if (environment.production) {
+      return from(this.http.get(urlRequest, {}, {})).pipe(
+        map((resp: HTTPResponse) => {
+          const parsedObj = JSON.parse(resp.data);
+          this.allCountries = parsedObj;
+          return parsedObj;
+        })
+      );
+    } else {
+      return this.httpclient.get<Country[]>(urlRequest).pipe(tap((resp: Country[]) => (this.allCountries = resp)));
     }
   }
 }

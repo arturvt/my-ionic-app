@@ -9,7 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { Drivers, Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { iosTransitionAnimation } from '@ionic/core/dist/collection/utils/transition/ios.transition';
 
 import { HTTP } from '@ionic-native/http/ngx';
@@ -25,6 +26,10 @@ import { HTTP } from '@ionic-native/http/ngx';
     AppRoutingModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    IonicStorageModule.forRoot({
+      name: '__appDB',
+      driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
+    }),
   ],
   providers: [StatusBar, SplashScreen, IonBackButton, IonButtons, HTTP, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

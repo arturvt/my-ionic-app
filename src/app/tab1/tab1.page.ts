@@ -23,6 +23,7 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('init!')
     combineLatest([this.countryService.getAllCountries(), this.countryService.getCountries()])
       .pipe(take(1))
       .subscribe(([all, countryRequest]) => {
