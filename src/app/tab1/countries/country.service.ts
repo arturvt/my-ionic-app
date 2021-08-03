@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { HTTP, HTTPResponse } from '@ionic-native/http/ngx';
 import { map, tap } from 'rxjs/operators';
 import { StorageService } from 'src/app/services/storage.service';
-import { ToastController } from '@ionic/angular';
+import { Toast } from '@capacitor/toast';
 
 @Injectable({ providedIn: 'root' })
 export class CountryService {
@@ -16,17 +16,15 @@ export class CountryService {
 
   constructor(private httpclient: HttpClient,
     private http: HTTP,
-    private storage: StorageService,
-    private toastController: ToastController) {
+    private storage: StorageService) {
     this.host = environment.geo_api.host;
   }
 
   async presentToast(message?: string) {
-    const toast = await this.toastController.create({
-      message: message? message: 'Your settings have been saved.',
-      duration: 2000
+    await Toast.show({
+      text: message? message: 'Your settings have been saved.',
+      position: 'top'
     });
-    toast.present();
   }
 
 

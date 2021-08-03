@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from './products/products.service';
-import { Plugins } from '@capacitor/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-const { Browser } = Plugins;
-const { LocalNotifications } = Plugins;
-const { Share } = Plugins;
-const { SplashScreen } = Plugins;
-const { Modals } = Plugins;
+import { Browser } from '@capacitor/browser';
+import { LocalNotifications } from '@capacitor/local-notifications';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { Share } from '@capacitor/share';
+import { Dialog } from '@capacitor/dialog';
+
+
 
 interface Links {
   name: string;
@@ -29,14 +29,25 @@ export class Tab2Page implements OnInit {
       url: 'https://www.swisscom.ch',
     },
     {
+      name: 'Smartphones',
+      description: 'Swisscom shop',
+      url: 'https://www.swisscom.ch/en/residential/products/smartphones.html',
+    },
+    {
+      name: 'Smartwatches',
+      description: 'Swisscom shop',
+      url: 'https://www.swisscom.ch/en/residential/products/smartwatches.html',
+    },
+
+    {
       name: 'Bundle configurator',
       description: 'Your Products',
       url: 'https://www.swisscom.ch/bundle-configurator/?app=my-swisscom-app',
     },
     {
       name: 'Bundle configurator (no optimization)',
-      description: 'Help with your phone',
-      url: 'https://www.swisscom.ch/en/residential/plans-rates/inone-home/plans-overview.html',
+      description: 'Your products',
+      url: 'https://www.swisscom.ch/bundle-configurator/?app=my-swisscom-app',
     },
     {
       name: 'Status page',
@@ -45,10 +56,9 @@ export class Tab2Page implements OnInit {
     },
   ];
 
-  constructor(private productService: ProductService, private inAppBrowser: InAppBrowser) {}
+  constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   triggerCall(): void {
     console.log(`Call`);
@@ -102,19 +112,19 @@ export class Tab2Page implements OnInit {
     await Browser.open({
       url,
       windowName: 'Swisscom title',
-      presentationStyle: fullScreen? 'popover':'fullscreen',
+      presentationStyle: fullScreen ? 'popover' : 'fullscreen',
     });
   }
 
   async alertModal() {
-    const alertRet = await Modals.alert({
+    const alertRet = await Dialog.alert({
       title: 'Stop',
       message: 'this is an error',
     });
   }
 
   async questionModal() {
-    const promptRet = await Modals.prompt({
+    const promptRet = await Dialog.prompt({
       title: 'Hello',
       message: "What's your name?",
     });

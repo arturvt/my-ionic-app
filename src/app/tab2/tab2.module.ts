@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { HttpClientModule } from '@angular/common/http';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
 @NgModule({
@@ -16,6 +15,6 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     HttpClientModule
   ],
   declarations: [Tab2Page],
-  providers: [InAppBrowser]
+  providers: []
 })
 export class Tab2PageModule {}
