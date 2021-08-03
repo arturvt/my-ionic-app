@@ -19,7 +19,7 @@
   </ion-item>
   <ng-container *ngIf="(countryList | async) as filteredCountries">
     <ion-list>
-      <ion-item *ngFor="let country of filteredCountries" button [routerLink]="['/tabs/tab1/country', country.code]">
+      <ion-item *ngFor="let country of filteredCountries" button [routerLink]="['/tabs/world', country.code]">
         <ion-badge slot="start">{{country.code}}</ion-badge>
         <ion-label>{{country.name}}</ion-label>
       </ion-item>

@@ -1,0 +1,405 @@
+{
+  "code": "DZA",
+  "name": "Algeria",
+  "codeTwo": "DZ",
+  "wikiId": "Q262",
+  "population": 41318142,
+  "capital": "Algiers",
+  "flag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Algeria.svg",
+  "currency": {
+    "name": "Algerian dinar",
+    "code": "DZD"
+  },
+  "location": {
+    "location": "Point(1.0 28.0)",
+    "lat": "1.0",
+    "lon": "28.0",
+    "geo": "http://commons.wikimedia.org/data/main/Data:Algeria.map",
+    "map": ["https://commons.wikimedia.org/wiki/Special:FilePath/DZA%20orthographic.svg", "https://commons.wikimedia.org/wiki/Special:FilePath/LocationAlgeria.svg"]
+  },
+  "regions": [{
+    "isoCode": "01",
+    "countryCode": "DZ",
+    "name": "Adrar Province",
+    "fipsCode": "34",
+    "wikiId": "Q188166",
+    "numCities": 36,
+    "capital": "Adrar"
+  }, {
+    "isoCode": "16",
+    "countryCode": "DZ",
+    "name": "Algiers Province",
+    "fipsCode": "01",
+    "wikiId": "Q141026",
+    "numCities": 36,
+    "capital": "Algiers"
+  }, {
+    "isoCode": "23",
+    "countryCode": "DZ",
+    "name": "Annaba Province",
+    "fipsCode": "37",
+    "wikiId": "Q213944",
+    "numCities": 7,
+    "capital": "Annaba"
+  }, {
+    "isoCode": "44",
+    "countryCode": "DZ",
+    "name": "Aïn Defla Province",
+    "fipsCode": "35",
+    "wikiId": "Q168953",
+    "numCities": 54,
+    "capital": "Aïn Defla"
+  }, {
+    "isoCode": "46",
+    "countryCode": "DZ",
+    "name": "Aïn Témouchent Province",
+    "fipsCode": "36",
+    "wikiId": "Q233670",
+    "numCities": 20,
+    "capital": "Aïn Témouchent"
+  }, {
+    "isoCode": "05",
+    "countryCode": "DZ",
+    "name": "Batna Province",
+    "fipsCode": "03",
+    "wikiId": "Q215452",
+    "numCities": 40,
+    "capital": "Batna"
+  }, {
+    "isoCode": "07",
+    "countryCode": "DZ",
+    "name": "Biskra",
+    "fipsCode": "19",
+    "wikiId": "Q458402",
+    "numCities": 43,
+    "capital": "Biskra"
+  }, {
+    "isoCode": "09",
+    "countryCode": "DZ",
+    "name": "Blida Province",
+    "fipsCode": "20",
+    "wikiId": "Q233637",
+    "numCities": 24,
+    "capital": "Blida"
+  }, {
+    "isoCode": "34",
+    "countryCode": "DZ",
+    "name": "Bordj Bou Arréridj Province",
+    "fipsCode": "39",
+    "wikiId": "Q266411",
+    "numCities": 35,
+    "capital": "Bordj Bou Arréridj"
+  }, {
+    "isoCode": "35",
+    "countryCode": "DZ",
+    "name": "Boumerdès Province",
+    "fipsCode": "40",
+    "wikiId": "Q236752",
+    "numCities": 30,
+    "capital": "Boumerdès"
+  }, {
+    "isoCode": "10",
+    "countryCode": "DZ",
+    "name": "Bouïra Province",
+    "fipsCode": "21",
+    "wikiId": "Q233655",
+    "numCities": 40,
+    "capital": "Bouïra"
+  }, {
+    "isoCode": "08",
+    "countryCode": "DZ",
+    "name": "Béchar Province",
+    "fipsCode": "38",
+    "wikiId": "Q215467",
+    "numCities": 29,
+    "capital": "Béchar"
+  }, {
+    "isoCode": "06",
+    "countryCode": "DZ",
+    "name": "Béjaïa Province",
+    "fipsCode": "18",
+    "wikiId": "Q233665",
+    "numCities": 36,
+    "capital": "Béjaïa"
+  }, {
+    "isoCode": "02",
+    "countryCode": "DZ",
+    "name": "Chlef Province",
+    "fipsCode": "41",
+    "wikiId": "Q231752",
+    "numCities": 33,
+    "capital": "Chlef"
+  }, {
+    "isoCode": "25",
+    "countryCode": "DZ",
+    "name": "Constantine Province",
+    "fipsCode": "04",
+    "wikiId": "Q232043",
+    "numCities": 21,
+    "capital": "Constantine"
+  }, {
+    "isoCode": "17",
+    "countryCode": "DZ",
+    "name": "Djelfa Province",
+    "fipsCode": "22",
+    "wikiId": "Q233233",
+    "numCities": 38,
+    "capital": "Djelfa"
+  }, {
+    "isoCode": "32",
+    "countryCode": "DZ",
+    "name": "El Bayadh Province",
+    "fipsCode": "42",
+    "wikiId": "Q235703",
+    "numCities": 51,
+    "capital": "El Bayadh"
+  }, {
+    "isoCode": "39",
+    "countryCode": "DZ",
+    "name": "El Oued Province",
+    "fipsCode": "43",
+    "wikiId": "Q233651",
+    "numCities": 30,
+    "capital": "El Oued"
+  }, {
+    "isoCode": "36",
+    "countryCode": "DZ",
+    "name": "El Tarf Province",
+    "fipsCode": "44",
+    "wikiId": "Q236788",
+    "numCities": 37,
+    "capital": "El Taref"
+  }, {
+    "isoCode": "47",
+    "countryCode": "DZ",
+    "name": "Ghardaïa Province",
+    "fipsCode": "45",
+    "wikiId": "Q17601",
+    "numCities": 14,
+    "capital": "Ghardaia"
+  }, {
+    "isoCode": "24",
+    "countryCode": "DZ",
+    "name": "Guelma Province",
+    "fipsCode": "23",
+    "wikiId": "Q235727",
+    "numCities": 20,
+    "capital": "Guelma"
+  }, {
+    "isoCode": "33",
+    "countryCode": "DZ",
+    "name": "Illizi Province",
+    "fipsCode": "46",
+    "wikiId": "Q233659",
+    "numCities": 23,
+    "capital": "Illizi"
+  }, {
+    "isoCode": "18",
+    "countryCode": "DZ",
+    "name": "Jijel Province",
+    "fipsCode": "24",
+    "wikiId": "Q235718",
+    "numCities": 24,
+    "capital": "Jijel"
+  }, {
+    "isoCode": "40",
+    "countryCode": "DZ",
+    "name": "Khenchela Province",
+    "fipsCode": "47",
+    "wikiId": "Q213950",
+    "numCities": 12,
+    "capital": "Khenchela"
+  }, {
+    "isoCode": "03",
+    "countryCode": "DZ",
+    "name": "Laghouat Province",
+    "fipsCode": "25",
+    "wikiId": "Q231748",
+    "numCities": 20,
+    "capital": "Laghouat"
+  }, {
+    "isoCode": "28",
+    "countryCode": "DZ",
+    "name": "M'Sila Province",
+    "fipsCode": "27",
+    "wikiId": "Q240870",
+    "numCities": 36,
+    "capital": "M'Sila"
+  }, {
+    "isoCode": "29",
+    "countryCode": "DZ",
+    "name": "Mascara Province",
+    "fipsCode": "26",
+    "wikiId": "Q236776",
+    "numCities": 58,
+    "capital": "Mascara"
+  }, {
+    "isoCode": "43",
+    "countryCode": "DZ",
+    "name": "Mila Province",
+    "fipsCode": "48",
+    "wikiId": "Q235723",
+    "numCities": 40,
+    "capital": "Mila"
+  }, {
+    "isoCode": "27",
+    "countryCode": "DZ",
+    "name": "Mostaganem Province",
+    "fipsCode": "07",
+    "wikiId": "Q221445",
+    "numCities": 43,
+    "capital": "Mostaganem"
+  }, {
+    "isoCode": "26",
+    "countryCode": "DZ",
+    "name": "Médéa Province",
+    "fipsCode": "06",
+    "wikiId": "Q235810",
+    "numCities": 56,
+    "capital": "Médéa"
+  }, {
+    "isoCode": "45",
+    "countryCode": "DZ",
+    "name": "Naama Province",
+    "fipsCode": "49",
+    "wikiId": "Q233675",
+    "numCities": 8,
+    "capital": "Naâma"
+  }, {
+    "isoCode": "31",
+    "countryCode": "DZ",
+    "name": "Oran Province",
+    "fipsCode": "09",
+    "wikiId": "Q231331",
+    "numCities": 37,
+    "capital": "Oran"
+  }, {
+    "isoCode": "30",
+    "countryCode": "DZ",
+    "name": "Ouargla Province",
+    "fipsCode": "50",
+    "wikiId": "Q235709",
+    "numCities": 19,
+    "capital": "Ouargla"
+  }, {
+    "isoCode": "04",
+    "countryCode": "DZ",
+    "name": "Oum El Bouaghi Province",
+    "fipsCode": "29",
+    "wikiId": "Q235705",
+    "numCities": 40,
+    "capital": "Oum El Bouaghi"
+  }, {
+    "isoCode": "48",
+    "countryCode": "DZ",
+    "name": "Relizane Province",
+    "fipsCode": "51",
+    "wikiId": "Q236758",
+    "numCities": 28,
+    "capital": "Relizane"
+  }, {
+    "isoCode": "20",
+    "countryCode": "DZ",
+    "name": "Saïda Province",
+    "fipsCode": "10",
+    "wikiId": "Q233640",
+    "numCities": 27,
+    "capital": "Saïda"
+  }, {
+    "isoCode": "22",
+    "countryCode": "DZ",
+    "name": "Sidi Bel Abbès Province",
+    "fipsCode": "30",
+    "wikiId": "Q235714",
+    "numCities": 41,
+    "capital": "Sidi Bel Abbès"
+  }, {
+    "isoCode": "21",
+    "countryCode": "DZ",
+    "name": "Skikda Province",
+    "fipsCode": "31",
+    "wikiId": "Q234227",
+    "numCities": 38,
+    "capital": "Skikda"
+  }, {
+    "isoCode": "41",
+    "countryCode": "DZ",
+    "name": "Souk Ahras Province",
+    "fipsCode": "52",
+    "wikiId": "Q236772",
+    "numCities": 4,
+    "capital": "Souk Ahras"
+  }, {
+    "isoCode": "19",
+    "countryCode": "DZ",
+    "name": "Sétif Province",
+    "fipsCode": "12",
+    "wikiId": "Q237164",
+    "numCities": 35,
+    "capital": "Sétif"
+  }, {
+    "isoCode": "11",
+    "countryCode": "DZ",
+    "name": "Tamanghasset Province",
+    "fipsCode": "53",
+    "wikiId": "Q229467",
+    "numCities": 14,
+    "capital": "Tamanrasset"
+  }, {
+    "isoCode": "14",
+    "countryCode": "DZ",
+    "name": "Tiaret Province",
+    "fipsCode": "13",
+    "wikiId": "Q233258",
+    "numCities": 48,
+    "capital": "Tiaret"
+  }, {
+    "isoCode": "37",
+    "countryCode": "DZ",
+    "name": "Tindouf Province",
+    "fipsCode": "54",
+    "wikiId": "Q231151",
+    "numCities": 1,
+    "capital": "Tindouf"
+  }, {
+    "isoCode": "42",
+    "countryCode": "DZ",
+    "name": "Tipasa Province",
+    "fipsCode": "55",
+    "wikiId": "Q235814",
+    "numCities": 44,
+    "capital": "Tipaza"
+  }, {
+    "isoCode": "38",
+    "countryCode": "DZ",
+    "name": "Tissemsilt Province",
+    "fipsCode": "56",
+    "wikiId": "Q235805",
+    "numCities": 5,
+    "capital": "Tissemsilt"
+  }, {
+    "isoCode": "15",
+    "countryCode": "DZ",
+    "name": "Tizi Ouzou Province",
+    "fipsCode": "14",
+    "wikiId": "Q233645",
+    "numCities": 52,
+    "capital": "Tizi Ouzou"
+  }, {
+    "isoCode": "13",
+    "countryCode": "DZ",
+    "name": "Tlemcen Province",
+    "fipsCode": "15",
+    "wikiId": "Q233632",
+    "numCities": 58,
+    "capital": "Tlemcen"
+  }, {
+    "isoCode": "12",
+    "countryCode": "DZ",
+    "name": "Tébessa Province",
+    "fipsCode": "33",
+    "wikiId": "Q267224",
+    "numCities": 22,
+    "capital": "Tébessa"
+  }]
+}

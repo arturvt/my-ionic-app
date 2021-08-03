@@ -13,8 +13,24 @@ router.get('/', function (req, res) {
   res.json(countryList)
 })
 
+// the short content
 router.get('/all', function (req, res) {
   res.json(allCountries)
+})
+
+router.get('/AFG', (_, res) => {
+  const AFG = require('./data/country/countries/AFG.json');
+  res.json(AFG);
+})
+
+router.get('/ALB', (_, res) => {
+  const AFG = require('./data/country/countries/ALB.json');
+  res.json(AFG);
+})
+
+router.get('/DZA', (_, res) => {
+  const AFG = require('./data/country/countries/DZA.json');
+  res.json(AFG);
 })
 
 module.exports = router

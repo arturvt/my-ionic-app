@@ -1,0 +1,165 @@
+{
+  "code": "ALB",
+  "name": "Albania",
+  "codeTwo": "AL",
+  "wikiId": "Q222",
+  "population": 3020209,
+  "capital": "Tirana",
+  "flag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Albania.svg",
+  "currency": {
+    "name": "Albanian lek",
+    "code": "ALL"
+  },
+  "location": {
+    "location": "Point(20.0 41.0)",
+    "lat": "20.0",
+    "lon": "41.0",
+    "geo": "http://commons.wikimedia.org/data/main/Data:Albania.map",
+    "map": ["https://commons.wikimedia.org/wiki/Special:FilePath/Albania%20%28orthographic%20projection%29.svg", "https://commons.wikimedia.org/wiki/Special:FilePath/LocationAlbania.svg", "https://commons.wikimedia.org/wiki/Special:FilePath/Locator%20map%20of%20Albania.svg"]
+  },
+  "regions": [{
+    "isoCode": "01",
+    "countryCode": "AL",
+    "name": "Berat County",
+    "fipsCode": "40",
+    "wikiId": "Q189296",
+    "numCities": 117,
+    "capital": "Berat"
+  }, {
+    "isoCode": "09",
+    "countryCode": "AL",
+    "name": "Dibër County",
+    "fipsCode": "41",
+    "wikiId": "Q192866",
+    "numCities": 81,
+    "capital": "Peshkopi"
+  }, {
+    "isoCode": "02",
+    "countryCode": "AL",
+    "name": "Durrës County",
+    "fipsCode": "42",
+    "wikiId": "Q192853",
+    "numCities": 34,
+    "capital": "Durrës"
+  }, {
+    "isoCode": "03",
+    "countryCode": "AL",
+    "name": "Elbasan County",
+    "fipsCode": "43",
+    "wikiId": "Q193790",
+    "numCities": 114,
+    "capital": "Elbasan"
+  }, {
+    "isoCode": "04",
+    "countryCode": "AL",
+    "name": "Fier County",
+    "fipsCode": "44",
+    "wikiId": "Q231900",
+    "numCities": 287,
+    "capital": "Fier"
+  }, {
+    "isoCode": "05",
+    "countryCode": "AL",
+    "name": "Gjirokastër County",
+    "fipsCode": "45",
+    "wikiId": "Q193454",
+    "numCities": 74,
+    "capital": "Gjirokastër"
+  }, {
+    "isoCode": "KA",
+    "countryCode": "AL",
+    "name": "Kavajë District",
+    "fipsCode": "",
+    "wikiId": "Q194182",
+    "numCities": 0,
+    "capital": "Kavajë"
+  }, {
+    "isoCode": "06",
+    "countryCode": "AL",
+    "name": "Korçë County",
+    "fipsCode": "46",
+    "wikiId": "Q193464",
+    "numCities": 0,
+    "capital": "Korçë"
+  }, {
+    "isoCode": "KO",
+    "countryCode": "AL",
+    "name": "Korçë District",
+    "fipsCode": "46",
+    "wikiId": "Q191491",
+    "numCities": 91,
+    "capital": "Korçë"
+  }, {
+    "isoCode": "07",
+    "countryCode": "AL",
+    "name": "Kukës County",
+    "fipsCode": "47",
+    "wikiId": "Q231896",
+    "numCities": 217,
+    "capital": "Kukës"
+  }, {
+    "isoCode": "08",
+    "countryCode": "AL",
+    "name": "Lezhë County",
+    "fipsCode": "48",
+    "wikiId": "Q193436",
+    "numCities": 1,
+    "capital": "Lezhë"
+  }, {
+    "isoCode": "LE",
+    "countryCode": "AL",
+    "name": "Lezhë District",
+    "fipsCode": "48",
+    "wikiId": "Q194185",
+    "numCities": 58,
+    "capital": "Lezhë"
+  }, {
+    "isoCode": "LB",
+    "countryCode": "AL",
+    "name": "Librazhd District",
+    "fipsCode": "",
+    "wikiId": "Q207002",
+    "numCities": 0,
+    "capital": "Librazhd"
+  }, {
+    "isoCode": "LU",
+    "countryCode": "AL",
+    "name": "Lushnjë District",
+    "fipsCode": "",
+    "wikiId": "Q206994",
+    "numCities": 0,
+    "capital": "Lushnjë"
+  }, {
+    "isoCode": "10",
+    "countryCode": "AL",
+    "name": "Shkodër County",
+    "fipsCode": "49",
+    "wikiId": "Q193438",
+    "numCities": 158,
+    "capital": "Shkodër"
+  }, {
+    "isoCode": "SK",
+    "countryCode": "AL",
+    "name": "Skrapar District",
+    "fipsCode": "",
+    "wikiId": "Q194381",
+    "numCities": 0,
+    "capital": "Çorovodë"
+  }, {
+    "isoCode": "11",
+    "countryCode": "AL",
+    "name": "Tirana County",
+    "fipsCode": "50",
+    "wikiId": "Q229892",
+    "numCities": 124,
+    "capital": "Tirana"
+  }, {
+    "isoCode": "12",
+    "countryCode": "AL",
+    "name": "Vlorë County",
+    "fipsCode": "51",
+    "wikiId": "Q192849",
+    "numCities": 78,
+    "capital": "Vlorë"
+  }]
+}
