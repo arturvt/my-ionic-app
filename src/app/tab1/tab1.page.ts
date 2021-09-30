@@ -12,7 +12,6 @@ import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 export class Tab1Page implements OnInit {
   totalElements = 0;
   loading = true;
-  private page: Pageable;
   private countries: Country[];
   private filteredCountries$ = new BehaviorSubject<Country[]>([]);
 
@@ -24,13 +23,13 @@ export class Tab1Page implements OnInit {
 
   ngOnInit(): void {
     console.log('init!')
-    combineLatest([this.countryService.getAllCountries(), this.countryService.getCountries()])
+    combineLatest([this.countryService.getAllCountries()])
       .pipe(take(1))
-      .subscribe(([all, countryRequest]) => {
+      .subscribe(([all]) => {
         this.loading = false;
         this.countries = all;
+        this.totalElements = all.length;
         this.filterCountries();
-        this.fillComponentContent(countryRequest);
       });
   }
 
@@ -42,12 +41,6 @@ export class Tab1Page implements OnInit {
     const term = event.target.value.toLowerCase();
     this.filterCountries(term);
   }
-
-  private fillComponentContent = (countryRequest: CountryRequest) => {
-    this.totalElements = countryRequest.totalElements;
-    this.page = countryRequest.pageable;
-    console.log(this.page);
-  };
 
   private filterCountries(searchTerm?: string): void {
     if (searchTerm) {

@@ -5,7 +5,8 @@ import { LocalNotifications } from '@capacitor/local-notifications';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { Share } from '@capacitor/share';
 import { Dialog } from '@capacitor/dialog';
-
+import { Platform } from '@ionic/angular';
+import { Toast } from '@capacitor/toast';
 
 
 interface Links {
@@ -23,6 +24,11 @@ export class Tab2Page implements OnInit {
   notificationTime = 5;
   pushContent: string;
   readonly linksList: Links[] = [
+    {
+      name: 'Apple website',
+      description: 'Apple',
+      url: 'https://www.apple.com',
+    },
     {
       name: 'Swisscom Website',
       description: 'Residential webpage',
@@ -56,9 +62,18 @@ export class Tab2Page implements OnInit {
     },
   ];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,
+    public platform: Platform) {}
 
   ngOnInit(): void {}
+
+  get platformInfo(): string {
+    return this.platform.platforms().join(',');
+  }
+
+  get orientation(): string {
+    return this.platform.isLandscape()?'inLandscape':'inPortrait';
+  }
 
   triggerCall(): void {
     console.log(`Call`);
@@ -129,5 +144,12 @@ export class Tab2Page implements OnInit {
       message: "What's your name?",
     });
     console.log('Prompt ret', promptRet);
+  }
+
+  async presentToast(message?: string) {
+    await Toast.show({
+      text: message? message: 'Default toast.',
+      position: 'top'
+    });
   }
 }
