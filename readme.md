@@ -8,12 +8,18 @@ A sample app in Ionic + Capacitor using free APIS.
 2. OpenWeather API - https://openweathermap.org/api
 3. Star Wars API - Swapi - https://swapi.dev/
 
+## Adding mobile platforms
+
+run `ionic capacitor add ios`
+run `ionic capacitor add android`
+
+
 ## Run
 
 run `ionic serve` to see the app in the browser.
 run `ionic capacitor add` to add native iOS or Android using Capacitor.
 
-Generating app icon and splash screens -> cordova-res --skip-config --copy
+Run Android in hot reload mode `ionic capacitor run android -l --external`
 
 ## Docs
 

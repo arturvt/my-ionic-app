@@ -1,4 +1,3 @@
-const allCountries = require('./data/country/all.json')
 const countryList = require('./data/country/country.json')
 const express = require('express')
 const router = express.Router()
@@ -13,8 +12,19 @@ router.get('/', function (req, res) {
   res.json(countryList)
 })
 
-router.get('/all', function (req, res) {
-  res.json(allCountries)
+router.get('/AFG.json', (_, res) => {
+  const AFG = require('./data/country/countries/AFG.json');
+  res.json(AFG);
+})
+
+router.get('/ALB.json', (_, res) => {
+  const AFG = require('./data/country/countries/ALB.json');
+  res.json(AFG);
+})
+
+router.get('/DZA.json', (_, res) => {
+  const AFG = require('./data/country/countries/DZA.json');
+  res.json(AFG);
 })
 
 module.exports = router

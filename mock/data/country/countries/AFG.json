@@ -1,0 +1,21 @@
+{
+  "code": "AFG",
+  "name": "Afghanistan",
+  "codeTwo": "AF",
+  "wikiId": "Q889",
+  "population": 36643815,
+  "capital": "Kabul",
+  "flag": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Afghanistan.svg",
+  "currency": { "name": "Afghan afghani", "code": "AFN" },
+  "location": {
+    "location": "Point(66.0 34.0)",
+    "lat": "66.0",
+    "lon": "34.0",
+    "geo": "http://commons.wikimedia.org/data/main/Data:Afghanistan.map",
+    "map": [
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Afghanistan%20on%20the%20globe%20%28Afghanistan%20centered%29.svg",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/LocationAfghanistan.svg"
+    ]
+  },
+  "regions": []
+}

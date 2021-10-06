@@ -13,6 +13,21 @@
         </ion-toolbar>
     </ion-header>
 
+    <h1>Platform Info</h1>
+
+    <p>isMobile App? {{platform.isMobileApp()}}</p>
+    <p>isDesktop App? {{platform.isDesktop()}}</p>
+    <p>isMobileWebView? {{platform.isWebAppMobileView()}}</p>
+    <p>Orientation: {{orientation}}</p>
+
+    <p>Debug: {{platform.debugPlatforms()}}</p>
+
+    <h2>Toasts</h2>
+
+    <ion-button expand="full" (click)="presentToast()">Open TOP toast </ion-button>
+    <ion-button expand="full" (click)="presentToast('BIG MESSAGEE')">Open toast big message </ion-button>
+
+
     <h1>Internal browser</h1>
     <ng-container *ngFor="let link of linksList">
         <ion-label>{{link.description}}</ion-label>

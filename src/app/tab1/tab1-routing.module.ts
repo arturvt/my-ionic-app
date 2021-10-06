@@ -11,7 +11,7 @@ const routes: Routes = [
         component: Tab1Page,
     },
     {
-        path: 'country/:countryId',
+        path: ':countryId',
         children: [
             {
                 path: '',
