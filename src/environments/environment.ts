@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   geo_api: {
-    host: ''
+    host: 'https://fiery-inferno-81.firebaseio.com'
   }
 };
 

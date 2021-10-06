@@ -7,6 +7,7 @@ import { Share } from '@capacitor/share';
 import { Dialog } from '@capacitor/dialog';
 import { Platform } from '@ionic/angular';
 import { Toast } from '@capacitor/toast';
+import { PlatformService } from '../services/platform.service';
 
 
 interface Links {
@@ -62,17 +63,12 @@ export class Tab2Page implements OnInit {
     },
   ];
 
-  constructor(private productService: ProductService,
-    public platform: Platform) {}
+  constructor(private productService: ProductService, public platform: PlatformService) {}
 
   ngOnInit(): void {}
 
-  get platformInfo(): string {
-    return this.platform.platforms().join(',');
-  }
-
   get orientation(): string {
-    return this.platform.isLandscape()?'inLandscape':'inPortrait';
+    return this.platform.isLandScape()?'inLandscape':'inPortrait';
   }
 
   triggerCall(): void {

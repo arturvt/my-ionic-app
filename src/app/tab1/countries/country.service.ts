@@ -7,6 +7,7 @@ import { HTTP, HTTPResponse } from '@ionic-native/http/ngx';
 import { map, tap } from 'rxjs/operators';
 import { StorageService } from 'src/app/services/storage.service';
 import { Toast } from '@capacitor/toast';
+import { PlatformService } from 'src/app/services/platform.service';
 
 @Injectable({ providedIn: 'root' })
 export class CountryService {
@@ -17,7 +18,8 @@ export class CountryService {
   constructor(
     private httpclient: HttpClient,
     private http: HTTP,
-    private storage: StorageService) {
+    private storage: StorageService,
+    private platformService: PlatformService) {
     this.host = environment.geo_api.host;
   }
 
@@ -50,12 +52,12 @@ export class CountryService {
   }
 
   getCountry(countryID: string): Observable<CountryDetail> {
-    const urlRequest = `${this.host}/api/country/${countryID}.json`;
+    const urlRequest = `/api/country/${countryID}.json`;
     if (this.cacheCountries[countryID]) {
       return of(this.cacheCountries[countryID]);
     }
-    if (environment.production) {
-      return from(this.http.get(urlRequest, {}, {})).pipe(
+    if (this.platformService.isMobileApp()) {
+      return from(this.http.get(`${this.host}${urlRequest}`, {}, {})).pipe(
         map((resp: HTTPResponse) => {
           const parsedObj = JSON.parse(resp.data);
           this.cacheCountries[countryID] = parsedObj;
@@ -71,10 +73,10 @@ export class CountryService {
   }
 
   private requestAllCountries(): Observable<Country[]> {
-    const urlRequest = `${this.host}/api/countries.json`;
+    const urlRequest = `/api/countries.json`;
     console.log('request:', urlRequest);
-    if (environment.production) {
-      return from(this.http.get(urlRequest, {}, {})).pipe(
+    if (this.platformService.isMobileApp()) {
+      return from(this.http.get(`${this.host}${urlRequest}`, {}, {})).pipe(
         map((resp: HTTPResponse) => {
           const parsedObj = JSON.parse(resp.data);
           this.allCountries = parsedObj;
