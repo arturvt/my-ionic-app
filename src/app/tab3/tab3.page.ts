@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Geolocation } from '@capacitor/geolocation';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tab3',
@@ -14,7 +15,7 @@ export class Tab3Page implements OnInit {
   apiLoaded: Observable<boolean>;
 
   constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaTJHgKwgsKo5komk5c_eGUdYryL6NADk', 'callback')
+    this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key='+ environment.google_map.key, 'callback')
     .pipe(
       map(() => true),
       catchError(() => of(false)),

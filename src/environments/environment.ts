@@ -6,6 +6,9 @@ export const environment = {
   production: false,
   geo_api: {
     host: 'https://fiery-inferno-81.firebaseio.com'
+  },
+  google_map: {
+    key: ''
   }
 };
 
