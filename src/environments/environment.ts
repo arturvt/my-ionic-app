@@ -8,7 +8,7 @@ export const environment = {
     host: 'https://fiery-inferno-81.firebaseio.com'
   },
   google_map: {
-    key: ''
+    key: 'AIzaSyBmghxfdtd9hyNVH2T1uQ_QHnTlJnuX57k'
   }
 };
 

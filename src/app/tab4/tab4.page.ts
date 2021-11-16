@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { PlatformService } from '../services/platform.service';
-import { LoginPluginWebPlugin, SysInfoPlugin } from './tab4.module';
+import { SysInfoPlugin } from './tab4.module';
 import { AppNextEchoService, EchoService, LoginService, AppNextLoginService } from 'myswisscom-appnext';
 
 
@@ -36,12 +36,6 @@ export class Tab4Page implements OnInit {
 
   callEchoMyPLugin(mesage: string = 'callEcho'): void {
 
-
-    LoginPluginWebPlugin.echo({
-      value: mesage,
-    }).then(() => {
-      console.log('DONE!');
-    });
   }
 
   callSysInfo(): void {
