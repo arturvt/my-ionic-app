@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Login } from '@swisscom-app/login';
 import { PlatformService } from '../services/platform.service';
 import { LoginPluginWebPlugin, SysInfoPlugin } from './tab4.module';
 import { AppNextEchoService, EchoService, LoginService, AppNextLoginService } from 'myswisscom-appnext';
@@ -29,19 +27,11 @@ export class Tab4Page implements OnInit {
   }
 
   callEcho(mesage: string = 'callEcho'): void {
-    Login.echo({
-      value: mesage,
-    }).then(() => {
-      console.log('DONE!');
-    });
+
   }
 
   callEchoUp(mesage: string = 'callEchoUp'): void {
-    Login.echoUp({
-      value: mesage,
-    }).then(() => {
-      console.log('DONE!');
-    });
+
   }
 
   callEchoMyPLugin(mesage: string = 'callEcho'): void {
