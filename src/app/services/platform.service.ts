@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
+const myIds: string[] = [];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,7 @@ export class PlatformService {
 
   // Is the mobile app as capacitor or cordova are available
   isMobileApp(): boolean {
-    return this.platform.is('capacitor') || this.platform.is('cordova');
+    return this.platform.is('hybrid');
   }
 
   // This is the case
@@ -35,7 +37,7 @@ export class PlatformService {
   }
 
   isTabled(): boolean {
-    return this.platform.is('phablet');
+    return this.platform.is('tablet');
   }
 
   // When running from MobileApp context, it might say it's desktop as well.

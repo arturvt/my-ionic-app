@@ -1,43 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Maps </ion-title>
+    <ion-title>Plugins</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Chat</ion-title>
+      <ion-title size="large">Plugins</ion-title>
     </ion-toolbar>
   </ion-header>
-  <!-- Default textarea -->
-<ion-textarea></ion-textarea>
 
-<ion-label color="primary">Connected? {{(isConnected$ | async) === true?'yes':'no' }}</ion-label>
 
-<!-- Textarea in an item with a placeholder -->
-<br/>
-<br/>
+  <ion-label color="primary">isMobileAppEnv? {{(isMobileApp ) === true?'yes':'no' }}</ion-label>
+  <section class="full-width">
+    <header>Call echo</header>
+    <ion-button expand="full" color="secondary" (click)="callEcho('Echo regular mesage')">A full-width button
+    </ion-button>
+  </section>
 
-<!-- Disabled and readonly textarea in an item with a stacked label -->
-<ion-item>
-  <ion-label position="stacked">Summary</ion-label>
-  <ion-textarea
-    disabled
-    readonly
-    value="Ionic enables developers to build performant, high-quality mobile apps.">
-  </ion-textarea>
-</ion-item>
+  <section class="full-width">
+    <header>Call Echo UP</header>
+    <ion-button expand="full" color="tertiary" (click)="callEchoMyPLugin('Echo Up Message')">A full-width button</ion-button>
+  </section>
 
-<!-- Textarea that clears the value on edit -->
-<ion-item>
-  <ion-label>Comment</ion-label>
-  <ion-textarea clearOnEdit="true"></ion-textarea>
-</ion-item>
-
-<!-- Textarea with custom number of rows and cols -->
-<ion-item>
-  <ion-label>Notes</ion-label>
-  <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
-</ion-item>
+  <section class="full-width">
+    <header>SysInfo</header>
+    <ion-button expand="full" color="danger" (click)="callSysInfo()">A full-width button</ion-button>
+  </section>
 </ion-content>

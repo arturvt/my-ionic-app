@@ -32,6 +32,7 @@ export class CountryService {
 
 
   getAllCountries(): Observable<Country[]> {
+    this.presentToast('getAllCountries!');
     const allFromStorageStr = this.storage.get('allCountries');
 
     if (allFromStorageStr) {

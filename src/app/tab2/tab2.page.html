@@ -14,13 +14,8 @@
     </ion-header>
 
     <h1>Platform Info</h1>
+    <button routerLink="../platform-info" >Platform Info</button>
 
-    <p>isMobile App? {{platform.isMobileApp()}}</p>
-    <p>isDesktop App? {{platform.isDesktop()}}</p>
-    <p>isMobileWebView? {{platform.isWebAppMobileView()}}</p>
-    <p>Orientation: {{orientation}}</p>
-
-    <p>Debug: {{platform.debugPlatforms()}}</p>
 
     <h2>Toasts</h2>
 
@@ -28,13 +23,7 @@
     <ion-button expand="full" (click)="presentToast('BIG MESSAGEE')">Open toast big message </ion-button>
 
 
-    <h1>Internal browser</h1>
-    <ng-container *ngFor="let link of linksList">
-        <ion-label>{{link.description}}</ion-label>
-        <ion-button
-                expand="full"
-                (click)="openBrowserUrl(link.url)">{{link.name}}</ion-button>
-    </ng-container>
+
 
 
 
@@ -45,7 +34,7 @@
 
     <hr>
 
-    <!-- <ion-list>
+    <ion-list>
       <ion-list-header lines="full">
         <h1>Local Push notifications</h1>
       </ion-list-header>
@@ -69,6 +58,14 @@
       </ion-item>
     </ion-list>
 
+    <h1>Internal browser</h1>
+    <ng-container *ngFor="let link of linksList">
+        <ion-label>{{link.description}}</ion-label>
+        <ion-button
+                expand="full"
+                (click)="openBrowserUrl(link.url)">{{link.name}}</ion-button>
+    </ng-container>
+<!--
     <section>
       <header>Splashscreen</header>
       <ion-button (click)="triggerSplashScreen()" expand="block" color="secondary" >A block button</ion-button>

@@ -9,7 +9,6 @@ import { Platform } from '@ionic/angular';
 import { Toast } from '@capacitor/toast';
 import { PlatformService } from '../services/platform.service';
 
-
 interface Links {
   name: string;
   url: string;
@@ -22,7 +21,7 @@ interface Links {
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page implements OnInit {
-  notificationTime = 5;
+  notificationTime = 2;
   pushContent: string;
   readonly linksList: Links[] = [
     {
@@ -63,12 +62,16 @@ export class Tab2Page implements OnInit {
     },
   ];
 
-  constructor(private productService: ProductService, public platform: PlatformService) {}
+  constructor(
+    private productService: ProductService,
+    public platform: PlatformService,
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   get orientation(): string {
-    return this.platform.isLandScape()?'inLandscape':'inPortrait';
+    return this.platform.isLandScape() ? 'inLandscape' : 'inPortrait';
   }
 
   triggerCall(): void {
@@ -83,7 +86,9 @@ export class Tab2Page implements OnInit {
   }
 
   async sendMessage() {
-    console.log(`Scheduling notification for ${this.notificationTime}`);
+    console.log(
+      `Scheduling notification for ${this.notificationTime}`,
+    );
     console.log(`content: ${this.pushContent}`);
     const notifs = await LocalNotifications.schedule({
       notifications: [
@@ -91,7 +96,9 @@ export class Tab2Page implements OnInit {
           title: 'Hello Push!',
           body: this.pushContent,
           id: 1,
-          schedule: { at: new Date(Date.now() + 1000 * 5) },
+          schedule: {
+            at: new Date(Date.now() + 1000 * this.notificationTime),
+          },
           sound: null,
           attachments: null,
           actionTypeId: '',
@@ -144,8 +151,8 @@ export class Tab2Page implements OnInit {
 
   async presentToast(message?: string) {
     await Toast.show({
-      text: message? message: 'Default toast.',
-      position: 'top'
+      text: message ? message : 'Default toast.',
+      position: 'top',
     });
   }
 }

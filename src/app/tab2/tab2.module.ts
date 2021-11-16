@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { HttpClientModule } from '@angular/common/http';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { PlatformInfoComponent } from './platform-info/platform-info.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     Tab2PageRoutingModule,
     HttpClientModule
   ],
-  declarations: [Tab2Page],
+  declarations: [Tab2Page, PlatformInfoComponent],
   providers: []
 })
 export class Tab2PageModule {}

@@ -7,7 +7,11 @@ import { Tab4Page } from './tab4.page';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
+import { registerPlugin } from '@capacitor/core';
+
 import { Tab4PageRoutingModule } from './tab4-routing.module'
+import { LoginPluginWeb } from './login-plugin/login-plugin';
+import { SysInfo } from './sys-info-plugin/sys-info-plugin';
 
 @NgModule({
   imports: [
@@ -23,3 +27,17 @@ import { Tab4PageRoutingModule } from './tab4-routing.module'
   declarations: [Tab4Page]
 })
 export class Tab4PageModule {}
+
+const LoginPluginWebPlugin = registerPlugin<LoginPluginWeb>('Login', {
+  web: () => import('./login-plugin/login-plugin').then(m => new m.LoginPluginWeb()),
+});
+
+export { LoginPluginWebPlugin };
+
+
+const SysInfoPlugin = registerPlugin<SysInfo>('SysInfo', {
+  web: () => import('./sys-info-plugin/sys-info-plugin').then(m => new m.SysInfo()),
+});
+
+export { SysInfoPlugin };
+
