@@ -2,14 +2,21 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { IonBackButton, IonButtons, IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import {
+  HttpClientJsonpModule,
+  HttpClientModule,
+} from '@angular/common/http';
+import {
+  IonBackButton,
+  IonButtons,
+  IonicModule,
+  IonicRouteStrategy,
+} from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Drivers, Storage } from '@ionic/storage';
+import { Drivers } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { iosTransitionAnimation } from '@ionic/core/dist/collection/utils/transition/ios.transition';
 
@@ -28,10 +35,16 @@ import { HTTP } from '@ionic-native/http/ngx';
     HttpClientJsonpModule,
     IonicStorageModule.forRoot({
       name: '__appDB',
-      driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
+      driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage],
     }),
   ],
-  providers: [StatusBar, SplashScreen, IonBackButton, IonButtons, HTTP, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    StatusBar,
+    IonBackButton,
+    IonButtons,
+    HTTP,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

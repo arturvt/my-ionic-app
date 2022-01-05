@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 
@@ -13,7 +13,6 @@ import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private activatedRoute: ActivatedRoute,
     private route: Router,
@@ -35,7 +34,7 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      SplashScreen.hide();
     });
   }
 }
