@@ -9,7 +9,6 @@ import { Platform } from '@ionic/angular';
 import { Toast } from '@capacitor/toast';
 import { PlatformService } from '../services/platform.service';
 
-
 interface Links {
   name: string;
   url: string;
@@ -63,12 +62,23 @@ export class Tab2Page implements OnInit {
     },
   ];
 
-  constructor(private productService: ProductService, public platform: PlatformService) {}
+  constructor(
+    private productService: ProductService,
+    public platform: PlatformService,
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    LocalNotifications.addListener(
+      'localNotificationActionPerformed',
+      (event) => {
+        console.log('GOT local notification event.');
+        console.log(event);
+      },
+    );
+  }
 
   get orientation(): string {
-    return this.platform.isLandScape()?'inLandscape':'inPortrait';
+    return this.platform.isLandScape() ? 'inLandscape' : 'inPortrait';
   }
 
   triggerCall(): void {
@@ -83,7 +93,9 @@ export class Tab2Page implements OnInit {
   }
 
   async sendMessage() {
-    console.log(`Scheduling notification for ${this.notificationTime}`);
+    console.log(
+      `Scheduling notification for ${this.notificationTime}`,
+    );
     console.log(`content: ${this.pushContent}`);
     const notifs = await LocalNotifications.schedule({
       notifications: [
@@ -144,8 +156,8 @@ export class Tab2Page implements OnInit {
 
   async presentToast(message?: string) {
     await Toast.show({
-      text: message? message: 'Default toast.',
-      position: 'top'
+      text: message ? message : 'Default toast.',
+      position: 'top',
     });
   }
 }

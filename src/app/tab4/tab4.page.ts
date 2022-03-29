@@ -8,14 +8,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
-
   isConnected$: Observable<boolean>;
 
-
-
-  constructor(httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     console.log('chat tab');
+  }
+
+  callChat(): void {
+    console.log('Click chat');
+    this.httpClient
+      .get('/api/api/chat')
+      .subscribe((res) => console.log(res));
   }
 }
