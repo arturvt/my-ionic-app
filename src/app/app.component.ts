@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 
 @Component({
