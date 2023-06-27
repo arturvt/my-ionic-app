@@ -31,7 +31,7 @@ export class CountryService {
 
   getAllCountries(): Observable<Country[]> {
     const allFromStorageStr = this.storage.get('allCountries');
-
+    console.log('get all countries from storage', allFromStorageStr);
     if (allFromStorageStr) {
       this.allCountries = JSON.parse(allFromStorageStr);
       this.presentToast('Loaded From storage');
@@ -41,6 +41,14 @@ export class CountryService {
       this.presentToast('Loaded from service cache');
       return of(this.allCountries);
     }
+
+    console.log(this.host);
+    return this.loadCountries();
+  }
+
+  private loadCountries(): Observable<Country[]> {
+    const urlRequest = `${this.host}/api/countries.json`;
+    return this.httpclient.get<Country[]>(urlRequest);
   }
 
   getCountry(countryID: string): Observable<CountryDetail> {
@@ -48,6 +56,7 @@ export class CountryService {
     if (this.cacheCountries[countryID]) {
       return of(this.cacheCountries[countryID]);
     }
+
     return this.httpclient.get<CountryDetail>(urlRequest).pipe(
       tap((resp: CountryDetail) => {
         this.presentToast(
