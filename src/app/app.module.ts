@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 import {
   HttpClientJsonpModule,
@@ -18,11 +19,13 @@ import { iosTransitionAnimation } from '@ionic/core/dist/collection/utils/transi
 
 @NgModule({
   declarations: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     IonicModule.forRoot({
       navAnimation: iosTransitionAnimation,
     }),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     HttpClientJsonpModule,
@@ -33,6 +36,5 @@ import { iosTransitionAnimation } from '@ionic/core/dist/collection/utils/transi
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

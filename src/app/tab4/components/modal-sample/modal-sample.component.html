@@ -1,0 +1,32 @@
+<sdx-dialog
+  id="developers-modal-example"
+  label="Would you like to delete this file?"
+  icon-name="icon-bin"
+  display-change-callback="
+    if (arguments[0] === 'open') document.querySelector('#first-action-element').doFocus();
+    if (arguments[0] === 'closing') document.querySelector('#modal-opener').doFocus();
+  "
+>
+  <sdx-dialog-toggle>
+    <sdx-button id="modal-opener" label="Open modal"></sdx-button>
+  </sdx-dialog-toggle>
+
+  <sdx-dialog-content>
+    <p>
+      Do you really want to delete <strong>SDX_planning.pdf</strong>?
+    </p>
+
+    <sdx-button-group>
+      <sdx-button
+        label="Yes, delete"
+        onclick="document.getElementById('developers-modal-example').close()"
+      ></sdx-button>
+      <sdx-button
+        id="first-action-element"
+        label="No, keep it"
+        onclick="document.getElementById('developers-modal-example').close()"
+        theme="secondary"
+      ></sdx-button>
+    </sdx-button-group>
+  </sdx-dialog-content>
+</sdx-dialog>

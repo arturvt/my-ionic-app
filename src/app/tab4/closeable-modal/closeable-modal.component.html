@@ -1,0 +1,37 @@
+<sdx-dialog
+  label="Call back now"
+  type="closable-modal"
+  id="closable-modal-example"
+  display-change-callback="
+    if (arguments[0] === 'open') document.querySelector('#first-input-element').doFocus();
+    if (arguments[0] === 'closing') document.querySelector('#closable-modal-opener').doFocus();
+  "
+>
+  <sdx-dialog-toggle>
+    <sdx-button
+      id="closable-modal-opener"
+      label="Open closable modal"
+    ></sdx-button>
+  </sdx-dialog-toggle>
+
+  <sdx-dialog-content>
+    <p>
+      We will be happy to put you through to one of our employees now.
+    </p>
+    <p>
+      <sdx-input
+        id="first-input-element"
+        label="How can we contact you by phone?"
+      ></sdx-input>
+    </p>
+
+    <sdx-button-group>
+      <sdx-button label="Call back now"></sdx-button>
+      <sdx-button
+        label="Cancel"
+        theme="secondary"
+        onclick="document.getElementById('closable-modal-example').close()"
+      ></sdx-button>
+    </sdx-button-group>
+  </sdx-dialog-content>
+</sdx-dialog>

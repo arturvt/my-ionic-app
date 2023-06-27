@@ -52,7 +52,7 @@ export class CountryService {
   }
 
   getCountry(countryID: string): Observable<CountryDetail> {
-    const urlRequest = `/api/country/${countryID}.json`;
+    const urlRequest = `${this.host}/api/country/${countryID}.json`;
     if (this.cacheCountries[countryID]) {
       return of(this.cacheCountries[countryID]);
     }
