@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +12,7 @@ import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
-    private statusBar: StatusBar,
     private activatedRoute: ActivatedRoute,
-    private route: Router,
   ) {
     this.initializeApp();
   }
@@ -33,7 +30,6 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
       SplashScreen.hide();
     });
   }
