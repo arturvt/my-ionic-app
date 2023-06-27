@@ -12,9 +12,8 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     CommonModule,
     FormsModule,
     Tab2PageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [Tab2Page],
-  providers: []
 })
 export class Tab2PageModule {}

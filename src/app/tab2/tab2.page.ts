@@ -5,7 +5,6 @@ import { LocalNotifications } from '@capacitor/local-notifications';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { Share } from '@capacitor/share';
 import { Dialog } from '@capacitor/dialog';
-import { Platform } from '@ionic/angular';
 import { Toast } from '@capacitor/toast';
 import { PlatformService } from '../services/platform.service';
 
@@ -68,6 +67,7 @@ export class Tab2Page implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('Starting Tab 2');
     LocalNotifications.addListener(
       'localNotificationActionPerformed',
       (event) => {
