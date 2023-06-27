@@ -14,31 +14,25 @@ import {
 } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Drivers } from '@ionic/storage';
-import { IonicStorageModule } from '@ionic/storage-angular';
 import { iosTransitionAnimation } from '@ionic/core/dist/collection/utils/transition/ios.transition';
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        IonicModule.forRoot({
-            navAnimation: iosTransitionAnimation,
-        }),
-        AppRoutingModule,
-        HttpClientModule,
-        HttpClientJsonpModule,
-        IonicStorageModule.forRoot({
-            name: '__appDB',
-            driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage],
-        }),
-    ],
-    providers: [
-        IonBackButton,
-        IonButtons,
-        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ],
-    bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot({
+      navAnimation: iosTransitionAnimation,
+    }),
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+  ],
+  providers: [
+    IonBackButton,
+    IonButtons,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
