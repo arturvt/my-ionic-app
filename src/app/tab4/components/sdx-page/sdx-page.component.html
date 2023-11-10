@@ -1,0 +1,23 @@
+<div class="sdx">
+  <div class="container full-width--mobile-only footer-padding">
+    <h1>this is H1 SDX</h1>
+    <hr aria-hidden="true" />
+    <h2>Buttons</h2>
+    <div class="row">
+      <div class="col-xs">
+        <sdx-button theme="confirm" label="Confirm"></sdx-button>
+      </div>
+      <div class="col-xs">
+        <sdx-button theme="primary" label="Primary button" (click)="startListener('artur')"></sdx-button>
+      </div>
+    </div>
+    <hr aria-hidden="true" />
+    <h2>Modals</h2>
+    <div class="row margin-bottom-3">
+      <app-modal-sample></app-modal-sample>
+    </div>
+    <div class="row">
+      <app-closeable-modal></app-closeable-modal>
+    </div>
+  </div>
+</div>

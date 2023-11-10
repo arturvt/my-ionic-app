@@ -13,6 +13,7 @@ import {
 import { Tab4PageRoutingModule } from './tab4-routing.module';
 import { ModalSampleComponent } from './components/modal-sample/modal-sample.component';
 import { CloseableModalComponent } from './closeable-modal/closeable-modal.component';
+import { SdxPageComponent } from './components/sdx-page/sdx-page.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -25,6 +26,6 @@ import { CloseableModalComponent } from './closeable-modal/closeable-modal.compo
     RouterModule.forChild([{ path: '', component: Tab4Page }]),
     Tab4PageRoutingModule,
   ],
-  declarations: [Tab4Page, ModalSampleComponent, CloseableModalComponent],
+  declarations: [Tab4Page, ModalSampleComponent, CloseableModalComponent, SdxPageComponent],
 })
 export class Tab4PageModule {}
