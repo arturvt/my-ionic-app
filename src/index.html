@@ -5,12 +5,46 @@
     <title>Ionic App</title>
 
     <base href="/" />
+    <link
+      integrity="sha384-MmmmJeEPAxD1iX6n7wdbLW0dteLhwnZNVUFWFcfQKHo0hZKn4FlvIwL/QbAxiiH8"
+      crossorigin="anonymous"
+      rel="icon"
+      href="https://sdx.scsstatic.ch/v2.108.0/images/favicon.ico"
+      type="image/x-icon"
+      sizes="32x32"
+    />
+    <link
+      integrity="sha384-1Vw8E/e4hde3fDcxPuE0dTCNkbv7n5jnh+c8vFi/JSBR69MBPGpFtwa2Aa9C0dGZ"
+      crossorigin="anonymous"
+      rel="icon"
+      href="https://sdx.scsstatic.ch/v2.108.0/images/svgs/swisscom-logo-lifeform.svg"
+      type="image/svg+xml"
+    />
+    <link
+      integrity="sha384-chaYXls8KFU2Z0IjQM6ov610YWOVnbZtPnhqSxZkzSa625S9n8KfM6Z6mpLv5AQN"
+      crossorigin="anonymous"
+      rel="apple-touch-icon"
+      href="https://sdx.scsstatic.ch/v2.108.0/images/swisscom-logo-lifeform-180x180.png"
+    />
+
     <!-- SDX Web Components CSS (~30 KB gzipped, contains only SDX Web Components) -->
     <link
+      integrity="sha384-RtZHHDlNZhAPSN9mZQCT+GSWtrtlTu8eMqbObVzBOZJU5TXQS6rx2HlklXsPBDmI"
       crossorigin="anonymous"
       rel="stylesheet"
-      href="https://sdx.scsstatic.ch/v2.80.0/css/webcomponents.min.css"
+      href="https://sdx.scsstatic.ch/v2.108.0/css/webcomponents.min.css"
     />
+
+    <!-- SDX CSS (~60 KB gzipped alternative which also includes "non Web Component" SDX components) -->
+    <!-- <link integrity="sha384-D4CTA+G+gEzDLxKb8u93icSwYifY1NfZvzaDpTygeuJDDyx50xlkVJhBPojRce/b" crossorigin="anonymous" rel="stylesheet" href="https://sdx.scsstatic.ch/v2.108.0/css/sdx.min.css"> -->
+
+    <!-- SDX Web Components JS (~4 KB gzipped, lazy loads only SDX Web Components effectively used) -->
+    <script
+      integrity="sha384-o1U1xbFgwdwUHqIdX0c8a4e06g/5jz7HAFNSBX5eBz7zjZKgzll5E13OhwmRzpVw"
+      crossorigin="anonymous"
+      type="module"
+      src="https://sdx.scsstatic.ch/v2.108.0/js/webcomponents/webcomponents/webcomponents.esm.js"
+    ></script>
     <meta name="color-scheme" content="light dark" />
     <meta
       name="viewport"
@@ -18,22 +52,11 @@
     />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <script
-      crossorigin="anonymous"
-      type="module"
-      src="https://sdx.scsstatic.ch/v2.80.0/js/webcomponents/webcomponents/webcomponents.esm.js"
-    ></script>
-    <link
-      rel="icon"
-      type="image/png"
-      href="assets/icon/favicon.png"
-    />
+
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
     <!-- add to homescreen for ios -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black"
-    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   </head>
 
   <body>
