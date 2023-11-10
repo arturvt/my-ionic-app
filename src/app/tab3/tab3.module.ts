@@ -7,7 +7,8 @@ import { Tab3Page } from './tab3.page';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
-import { Tab3PageRoutingModule } from './tab3-routing.module'
+import { Tab3PageRoutingModule } from './tab3-routing.module';
+import { SafeUrlPipePipe } from './pipes/safe-url-pipe.pipe'
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { Tab3PageRoutingModule } from './tab3-routing.module'
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
   ],
-  declarations: [Tab3Page]
+  declarations: [Tab3Page, SafeUrlPipePipe]
 })
 export class Tab3PageModule {}

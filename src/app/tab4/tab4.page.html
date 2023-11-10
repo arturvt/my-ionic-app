@@ -4,32 +4,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">SDX and Ionic</ion-title>
     </ion-toolbar>
   </ion-header>
-  <h1>this is not SDX</h1>
+  <div class="ion-padding">
+    <h1>this is not SDX</h1>
+  </div>
+
   <div class="sdx">
-    <div class="container">
+    <div class="container full-width--mobile-only footer-padding">
       <h1>this is H1 SDX</h1>
       <hr aria-hidden="true" />
+      <h2>Buttons</h2>
       <div class="row">
         <div class="col-xs">
           <sdx-button theme="confirm" label="Confirm"></sdx-button>
         </div>
         <div class="col-xs">
-          <sdx-button
-            theme="primary"
-            label="Primary button"
-          ></sdx-button>
+          <sdx-button theme="primary" label="Primary button" (click)="startListener('artur')"></sdx-button>
         </div>
       </div>
       <hr aria-hidden="true" />
-      <div class="row">
+      <div class="row margin-bottom-3">
         <app-modal-sample></app-modal-sample>
-        <hr aria-hidden="true" />
+      </div>
+      <div class="row">
         <app-closeable-modal></app-closeable-modal>
       </div>
     </div>

@@ -1,57 +1,56 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>
-            Native
-        </ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Native Elements</ion-title>
+  </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">App Settings</ion-title>
-        </ion-toolbar>
-    </ion-header>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Native Elements</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-
-    <h1>Platform Info!</h1>
-    <ion-tabs>
-      <ion-tab-bar slot="top">
-        <ion-tab-button tab="schedule">
-          <ion-icon name="calendar"></ion-icon>
-          <ion-label>Schedule</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-    <p>isMobile App? {{platform.isMobileApp()}}</p>
-    <p>isDesktop App? {{platform.isDesktop()}}</p>
-    <p>isMobileWebView? {{platform.isWebAppMobileView()}}</p>
-    <p>Orientation: {{orientation}}</p>
-
-    <p>Debug: {{platform.debugPlatforms()}}</p>
+  <div class="ion-padding">
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>Platform info</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <p>isMobile App? {{platform.isMobileApp()}}</p>
+          <p>isDesktop App? {{platform.isDesktop()}}</p>
+          <p>isMobileWebView? {{platform.isWebAppMobileView()}}</p>
+          <p>Orientation: {{orientation}}</p>
+        </div>
+        <div class="ion-padding" slot="content">
+          Debug: {{platform.debugPlatforms()}}
+        </div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>Browser links</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-button expand="full" (click)="openPDF()"
+            >Open PDF</ion-button
+          >
+        </div>
+        <div slot="content" *ngFor="let link of linksList">
+          <ion-button expand="full" (click)="openBrowserUrl(link.url)"
+            >{{link.name}}</ion-button
+          >
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
 
     <h2>Toasts</h2>
 
-    <ion-button expand="full" (click)="presentToast()">Open TOP toast </ion-button>
-    <ion-button expand="full" (click)="presentToast('BIG MESSAGEE')">Open toast big message </ion-button>
-
-
-    <h1>Internal browser</h1>
-    <ng-container *ngFor="let link of linksList">
-        <ion-label>{{link.description}}</ion-label>
-        <ion-button
-                expand="full"
-                (click)="openBrowserUrl(link.url)">{{link.name}}</ion-button>
-    </ng-container>
-
-
-
-    <ion-segment>
-        <ion-button expand="full" (click)="openPDF()">Open PDF</ion-button>
-    </ion-segment>
-
-
-    <hr>
+    <ion-button expand="full" (click)="presentToast()"
+      >Open TOP toast
+    </ion-button>
+    <ion-button expand="full" (click)="presentToast('BIG MESSAGEE')"
+      >Open toast big message
+    </ion-button>
 
     <ion-list>
       <ion-list-header lines="full">
@@ -59,11 +58,18 @@
       </ion-list-header>
       <ion-item>
         <ion-label>Message:</ion-label>
-        <ion-input [(ngModel)]="pushContent" placeholder="Enter Input"></ion-input>
+        <ion-input
+          [(ngModel)]="pushContent"
+          placeholder="Enter Input"
+        ></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Send push in {{notificationTime}} seconds</ion-label>
-        <ion-button expand="full" (click)="sendMessage()">Send message</ion-button>
+        <ion-label
+          >Send push in {{notificationTime}} seconds</ion-label
+        >
+        <ion-button expand="full" (click)="sendMessage()"
+          >Send message</ion-button
+        >
       </ion-item>
     </ion-list>
 
@@ -73,19 +79,33 @@
       </ion-list-header>
       <ion-item>
         <ion-label>Share a content</ion-label>
-        <ion-button expand="expand" (click)="shareContent()">Share</ion-button>
+        <ion-button expand="expand" (click)="shareContent()"
+          >Share</ion-button
+        >
       </ion-item>
     </ion-list>
 
     <section>
       <header>Splashscreen</header>
-      <ion-button (click)="triggerSplashScreen()" expand="block" color="secondary" >A block button</ion-button>
+      <ion-button
+        (click)="triggerSplashScreen()"
+        expand="block"
+        color="secondary"
+        >A block button</ion-button
+      >
     </section>
 
     <section>
       <header>Modals</header>
-      <ion-button (click)="alertModal()" expand="block" color="danger" >Alert modal</ion-button>
-      <ion-button (click)="questionModal()" expand="block" color="light" >Question</ion-button>
+      <ion-button (click)="alertModal()" expand="block" color="danger"
+        >Alert modal</ion-button
+      >
+      <ion-button
+        (click)="questionModal()"
+        expand="block"
+        color="light"
+        >Question</ion-button
+      >
     </section>
-
+  </div>
 </ion-content>

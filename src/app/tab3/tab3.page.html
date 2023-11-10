@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Maps </ion-title>
+    <ion-title>Ionic Components</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +10,36 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div *ngIf="apiLoaded | async">
-    <google-map id="map" class="map-content" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"></google-map>
-  </div>
+  <ion-button id="open-modal" expand="block">Open iFrame on Modal</ion-button>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <p>{{ selected.url }}</p>
+        <iframe
+          id="app-iframe"
+          [title]="selected.title"
+          [attr.src]="selected.url | safeUrl"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          class="ion-padding-top"
+          referrerpolicy="no-referrer"
+          allowfullscreen
+        >
+        </iframe>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

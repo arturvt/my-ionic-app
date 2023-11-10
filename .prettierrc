@@ -1,6 +1,14 @@
 {
-  "semi": true,
-  "trailingComma": "all",
   "singleQuote": true,
-  "printWidth": 70,
+  "arrowParens": "always",
+  "printWidth": 140,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "printWidth": 140,
+        "parser": "angular"
+      }
+    }
+  ]
 }

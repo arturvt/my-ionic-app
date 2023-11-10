@@ -1,56 +1,68 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonModal } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { Geolocation } from '@capacitor/geolocation';
-import { environment } from 'src/environments/environment';
+import { OverlayEventDetail } from '@ionic/core/components';
+
+interface Content {
+  title: string;
+  url: string;
+  visible: boolean;
+  value: string;
+}
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  styleUrls: ['tab3.page.scss'],
 })
 export class Tab3Page implements OnInit {
-
   apiLoaded: Observable<boolean>;
+  showSubHubIframe: boolean = false;
+  @ViewChild(IonModal) modal: IonModal;
 
-  constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key='+ environment.google_map.key, 'callback')
-    .pipe(
-      map(() => true),
-      catchError(() => of(false)),
-    );
+  visibleItems: Content[] = [
+    {
+      title: 'Swisscom Page',
+      url: 'https://vega.test2.swisscom.ch/myswisscom/assets/oidc/index.html',
+      visible: false,
+      value: 'swisscom',
+    },
+    {
+      title: 'SubHub Logged In',
+      url: 'https://vega.test2.swisscom.ch/myswisscom/assets/oidc/index.html?exchangeId=8955d90c-74e7-4d1b-a6eb-76a7247b04b4&redirectUrl=https%3A%2F%2Fvega.test2.swisscom.ch%2Fsubhub%3Flang%3Den&lang=en',
+      visible: false,
+      value: 'subhub',
+    },
+    {
+      title: 'MySwisscom Page',
+      url: 'https://www.swisscom.ch/myswisscom',
+      visible: false,
+      value: 'myswisscom',
+    },
+  ];
+
+  selected = this.visibleItems[1];
+
+  handleChange(event: any) {
+    this.selected = event;
   }
 
-  ngOnInit(): void {
-    this.initLocation();
+  name: string;
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
   }
 
-  center: google.maps.LatLngLiteral = {lat: 24, lng: 12};
-  zoom = 4;
-
-  moveMap(event: google.maps.MapMouseEvent) {
-    this.center = (event.latLng.toJSON());
-    console.log(event.latLng.toJSON())
+  confirm() {
+    this.modal.dismiss(this.name, 'confirm');
   }
 
-
-  async initLocation() {
-    const coordinates = await Geolocation.getCurrentPosition();
-    if (coordinates) {
-      coordinates.coords.latitude
-      console.log('Current position:', coordinates);
-
-      this.center  = {
-        lat: coordinates.coords.latitude, lng: coordinates.coords.longitude
-      };
-      this.zoom = 10;
-
-
-    } else {
-      console.log('No location allowed')
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      console.log('modal dismissed');
     }
+  }
 
-  };
-
+  ngOnInit(): void {}
 }

@@ -3,9 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Maps</ion-title>
+    <ion-title>Ionic Components</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <app-country-map *ngIf="countryDetail$ | async as countryDetail" [countryLocation]="countryDetail.location" ></app-country-map>
+  <app-country-map
+    *ngIf="countryDetail$ | async as countryDetail"
+    [countryLocation]="countryDetail.location"
+  ></app-country-map>
 </ion-content>

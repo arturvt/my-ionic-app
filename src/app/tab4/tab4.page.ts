@@ -13,4 +13,12 @@ export class Tab4Page implements OnInit {
   ngOnInit(): void {
     console.log('sdx tab');
   }
+
+  startListener(text: string) {
+    console.log('start listening');
+
+    // listens to a window event
+    window.addEventListener(text, (event) => {});
+    document.addEventListener(text, (event) => {});
+  }
 }
